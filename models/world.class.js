@@ -20,12 +20,12 @@ class World {
 
 
     draw(){
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
         this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
         // it allows that the image is loaded 25 times pro seconds or more, you cannot directly write "this.draw()" so you have to create a variable named for exemple let self;
         // the image is loaded as soon as the page is available so you don't need to write in the console: "world.draw()"
         // Now if you write in the console "world.character.x = 300", appears a new image of the character in a new position
-        this.enemies.forEach(enemy => {
+        this.enemies.forEach(enemy => {  // this showes the three enemy present in the array let enemies = []
             this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
         })
         let self = this;
