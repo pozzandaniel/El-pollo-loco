@@ -10,6 +10,10 @@ class World {
         new Clouds()
     ];
 
+    backgroundObjects = [
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0, 0)
+    ];
+    
     canvas;
     ctx;
     /**
@@ -26,19 +30,40 @@ class World {
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
+        this.addToMap(this.character);
         // it allows that the image is loaded 25 times pro seconds or more, you cannot directly write "this.draw()" so you have to create a variable named for exemple let self;
         // the image is loaded as soon as the page is available so you don't need to write in the console: "world.draw()"
         // Now if you write in the console "world.character.x = 300", appears a new image of the character in a new position
-        this.enemies.forEach(enemy => {  // this showes the three enemy present in the array let enemies = []
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        });
-        this.clouds.forEach(cloud => {
-            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
-        })
+
+        // this.enemies.forEach(enemy => {  // this showes the three enemy present in the array let enemies = []
+        //     this.addToMap(enemy);
+        // });
+        // this.clouds.forEach(cloud => {
+        //     this.addToMap(cloud);
+        // });
+        // this.backgroundObjects.forEach(bo => {
+        //     this.addToMap(bo);
+        // });
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.backgroundObjects);
+
+    
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
         })
+
+    }
+
+    addObjectsToMap(objects){
+        objects.forEach(o => {
+            this.addToMap(o);
+        })
+    }
+
+    addToMap(mo){
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+
     }
 }
