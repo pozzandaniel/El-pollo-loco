@@ -1,6 +1,6 @@
 let canvas;
-let character = new movableObject();
 let ctx;
+let world = new World();
 
 
 function init(){
