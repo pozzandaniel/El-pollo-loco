@@ -1,10 +1,15 @@
 class World {
     character = new Character();
     enemies = [
-        new Chicken,
-        new Chicken,
-        new Chicken
+        new Chicken(),
+        new Chicken(),
+        new Chicken()
     ];
+
+    clouds = [
+        new Clouds()
+    ];
+
     canvas;
     ctx;
     /**
@@ -27,6 +32,9 @@ class World {
         // Now if you write in the console "world.character.x = 300", appears a new image of the character in a new position
         this.enemies.forEach(enemy => {  // this showes the three enemy present in the array let enemies = []
             this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
+        });
+        this.clouds.forEach(cloud => {
+            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
         })
         let self = this;
         requestAnimationFrame(function(){
