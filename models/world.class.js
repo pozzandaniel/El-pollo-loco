@@ -19,15 +19,18 @@ class World {
     
     canvas;
     ctx;
+    keyboard;
     /**
      * This function starts at the beginning
      * 
      * @param {*} canvas // canvas represents the surface of our game where the characters are drawn
      */
-    constructor(canvas){
+    constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d'); // ctx is the image of our characters
         this.canvas = canvas; // the imported value canvas is saved in the general variable "canvas"
+        this.keyboard = keyboard;
         this.draw(); // the function draws is available with the comand in the console world.draw(), it causes that the characters are drawn in the canvas
+        this.setWorld();
     }
 
 
@@ -68,5 +71,9 @@ class World {
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
 
+    }
+
+    setWorld(){
+        this.character.world = this;
     }
 }
