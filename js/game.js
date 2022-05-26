@@ -1,6 +1,6 @@
 let canvas;
 let world;
-
+let keyboard = new Keyboard();
 
 function init(){
     canvas = document.getElementById('canvas');
@@ -8,5 +8,8 @@ function init(){
 
     
     
-    
 }
+
+document.addEventListener('keydown', (e) => {
+    console.log(e);
+})
