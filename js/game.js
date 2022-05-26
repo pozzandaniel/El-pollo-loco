@@ -13,7 +13,7 @@ function init(){
 
 
 document.addEventListener('keydown', (e) => {
-    console.log(e);
+    
     if(e.keyCode == 32){
         keyboard.SPACE = true;
     }
