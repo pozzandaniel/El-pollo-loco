@@ -3,6 +3,7 @@ class Character extends MovableObject{
     width = 150;
     y = 210;
     speed = 1;
+    otherDirection = false;
     IMAGES_WALKING = [
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -24,9 +25,12 @@ class Character extends MovableObject{
             setInterval(() => {
                 if(this.world.keyboard.RIGHT){
                     this.x += this.speed;
+                    this.otherDirection = false;
+
                 }
                 if(this.world.keyboard.LEFT){
                     this.x -= this.speed;
+                    this.otherDirection = true;
                 }
             })
 
