@@ -20,6 +20,7 @@ class World {
     canvas;
     ctx;
     keyboard;
+    camera_x;
     /**
      * This function starts at the beginning
      * 
@@ -36,26 +37,15 @@ class World {
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
-        // it allows that the image is loaded 25 times pro seconds or more, you cannot directly write "this.draw()" so you have to create a variable named for exemple let self;
-        // the image is loaded as soon as the page is available so you don't need to write in the console: "world.draw()"
-        // Now if you write in the console "world.character.x = 300", appears a new image of the character in a new position
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.backgroundObjects);
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.enemies);
+        this.addToMap(this.character);
+        this.ctx.translate(-this.camera_x, 0);
+
         
-        // this.enemies.forEach(enemy => {  // this showes the three enemy present in the array let enemies = []
-        //     this.addToMap(enemy);
-        // });
-        // this.clouds.forEach(cloud => {
-            //     this.addToMap(cloud);
-            // });
-            // this.backgroundObjects.forEach(bo => {
-                //     this.addToMap(bo);
-                // });
-                this.addObjectsToMap(this.backgroundObjects);
-                this.addObjectsToMap(this.clouds);
-                this.addObjectsToMap(this.enemies);
-                this.addToMap(this.character);
-                
-                
-                let self = this;
+        let self = this;
         requestAnimationFrame(function(){
             self.draw();
         })
