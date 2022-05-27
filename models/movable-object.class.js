@@ -7,6 +7,18 @@ class MovableObject{
     imageCache = {};
     currentImage = 0;
     speed = 0.1;
+    speedY = 0;
+    acceleration = 2;
+
+    applyGravitation(){
+        setInterval(() => {
+            if(this.y < 210){
+                this.y += this.speedY;
+                this.speedY += this.acceleration;
+
+            }
+        }, 1000/25);
+    }
     
 
     loadImg(path){
