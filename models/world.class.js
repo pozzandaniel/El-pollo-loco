@@ -51,7 +51,11 @@ class World {
             this.addToMap(o);
         })
     }
-
+    /**
+     * This function turn the image in the other direction if the property otherDirection is true. Then draw the object in the canvas.
+     * 
+     * @param {object} mo 
+     */
     addToMap(mo){
         if(mo.otherDirection){
             this.ctx.save();
