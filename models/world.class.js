@@ -35,7 +35,7 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
-        this.playMusic();
+        
 
 
         
@@ -71,13 +71,13 @@ class World {
         this.character.world = this;
     }
 
-    playMusic(){
-        this.soundtrack_audio.play();
-        setInterval(() => {
-            this.soundtrack_audio.play();
-        }, 28000);    
+    // playMusic(){
+    //     this.soundtrack_audio.play();
+    //     setInterval(() => {
+    //         this.soundtrack_audio.play();
+    //     }, 28000);    
     
        
-    }
+    // }
     
 }
