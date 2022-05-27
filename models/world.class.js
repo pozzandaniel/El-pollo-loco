@@ -4,6 +4,11 @@ class World {
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
+    chicken_1 = this.level.enemies[0];
+    chicken_2 = this.level.enemies[1];
+    chicken_3 = this.level.enemies[2];
+    big_Chicken = this.level.enemies[3];
+    
     
     
     
@@ -49,9 +54,7 @@ class World {
     addObjectsToMap(objects){
         objects.forEach(o => {
             this.addToMap(o);
-            if(objects == this.level.enemies){
-                this.setRectangle(o);
-            }
+            
         })
     }
     /**
@@ -60,36 +63,38 @@ class World {
      * @param {object} mo 
      */
     addToMap(mo){
-        if(mo.otherDirection){
-            this.ctx.save();
-            this.ctx.translate(mo.width, 0);
-            this.ctx.scale(-1, 1);
-            mo.x = mo.x * -1;
-        }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
-        if(mo == this.character){
-            this.setRectangle(mo);
+        this.flipImage(mo);
 
-        }
+        mo.draw(this.ctx);
         
-        if(mo.otherDirection){
-            this.ctx.restore();
-            mo.x = mo.x * -1;
-        }
+        if(mo == this.character || mo == this.chicken_1 || mo == this.chicken_2 || mo == this.chicken_3 || mo == this.big_Chicken){
+            mo.setRectangle(this.ctx);
+        } 
 
+        this.flipImageBack(mo);
     }
 
     setWorld(){
         this.character.world = this;
     }
 
-    setRectangle(mo){
-        this.ctx.beginPath();
-        this.ctx.lineWidth = "4";
-        this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
-        this.ctx.strokeStyle = "green";
-        this.ctx.stroke();
+    flipImage(mo){
+        if(mo.otherDirection){
+            this.ctx.save();
+            this.ctx.translate(mo.width, 0);
+            this.ctx.scale(-1, 1);
+            mo.x = mo.x * -1;
+        }
     }
+
+    flipImageBack(mo){
+        if(mo.otherDirection){
+            this.ctx.restore();
+            mo.x = mo.x * -1;
+        }
+    }
+
+    
 
     // playMusic(){
     //     this.soundtrack_audio.play();
