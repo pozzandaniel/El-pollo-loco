@@ -2,7 +2,7 @@ class World {
     character = new Character();
     level = level1;
     cord_x;
-    end_game = 719*2;
+    end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
     
     
@@ -49,6 +49,9 @@ class World {
     addObjectsToMap(objects){
         objects.forEach(o => {
             this.addToMap(o);
+            if(objects == this.level.enemies){
+                this.setRectangle(o);
+            }
         })
     }
     /**
@@ -64,6 +67,11 @@ class World {
             mo.x = mo.x * -1;
         }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+        if(mo == this.character){
+            this.setRectangle(mo);
+
+        }
+        
         if(mo.otherDirection){
             this.ctx.restore();
             mo.x = mo.x * -1;
@@ -73,6 +81,14 @@ class World {
 
     setWorld(){
         this.character.world = this;
+    }
+
+    setRectangle(mo){
+        this.ctx.beginPath();
+        this.ctx.lineWidth = "4";
+        this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
+        this.ctx.strokeStyle = "green";
+        this.ctx.stroke();
     }
 
     // playMusic(){
