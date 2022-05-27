@@ -1,12 +1,8 @@
 class World {
     character = new Character();
-    enemies = level1.enemies;
-
-    clouds = level1.clouds;
-
-    backgroundObjects = level1.backgroundObjects;
-
+    level = level1;
     cord_x;
+    end_game = 719*2;
     
     
     canvas;
@@ -30,9 +26,9 @@ class World {
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.backgroundObjects);
-        this.addObjectsToMap(this.clouds);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
 
