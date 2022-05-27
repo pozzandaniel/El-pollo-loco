@@ -27,6 +27,7 @@ class Character extends MovableObject{
                     this.x += this.speed;
                     this.otherDirection = false;
                     
+                    
                 }
                 if(this.world.keyboard.LEFT){
                     this.x -= this.speed;
