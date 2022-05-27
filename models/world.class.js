@@ -3,6 +3,9 @@ class World {
     level = level1;
     cord_x;
     end_game = 719*2;
+    soundtrack_audio = new Audio('./audio/soundtrack.mp3');
+    
+    
     
     
     canvas;
@@ -15,14 +18,15 @@ class World {
      * @param {*} canvas // canvas represents the surface of our game where the characters are drawn
      */
     constructor(canvas, keyboard){
+       
         this.ctx = canvas.getContext('2d'); // ctx is the image of our characters
         this.canvas = canvas; // the imported value canvas is saved in the general variable "canvas"
         this.keyboard = keyboard;
         this.draw(); // the function draws is available with the comand in the console world.draw(), it causes that the characters are drawn in the canvas
         this.setWorld();
     }
-
-
+    
+    
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
         this.ctx.translate(this.camera_x, 0);
@@ -31,6 +35,7 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
+        this.playMusic();
 
 
         
@@ -66,5 +71,13 @@ class World {
         this.character.world = this;
     }
 
+    playMusic(){
+        this.soundtrack_audio.play();
+        setInterval(() => {
+            this.soundtrack_audio.play();
+        }, 28000);    
+    
+       
+    }
     
 }

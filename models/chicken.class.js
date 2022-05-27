@@ -2,6 +2,7 @@ class Chicken extends MovableObject {
     y = 350;
     height = 80;
     width = 66;
+    chicken_audio = new Audio('./audio/chicken.mp3')
     IMAGES_WALKING = [
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png',
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png',
@@ -19,6 +20,9 @@ class Chicken extends MovableObject {
     animate() {
         this.moveLeft();
 
+        
+
+        
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_WALKING.length;
             let path = this.IMAGES_WALKING[i];
