@@ -26,6 +26,19 @@ class MovableObject{
     isAboveGround(){
         return this.y < 210;
     }
+
+    /**
+     * This is the function to evaluete of the character enters the area of the enemy. In that case is called an event named "collision"
+     * 
+     * @param {object} mo - it represents the movable-object, for example a chicken.
+     * @returns 
+     */
+    isColliding(mo){
+        return this.x + this.width > mo.x &&
+        this.y + this.height > mo.y &&
+        this.x < mo.x &&
+        this.y < mo.y + mo.height
+    }
     
 
     loadImg(path){

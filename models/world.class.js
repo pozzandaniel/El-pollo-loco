@@ -23,12 +23,12 @@ class World {
      * @param {*} canvas // canvas represents the surface of our game where the characters are drawn
      */
     constructor(canvas, keyboard){
-       
         this.ctx = canvas.getContext('2d'); // ctx is the image of our characters
         this.canvas = canvas; // the imported value canvas is saved in the general variable "canvas"
         this.keyboard = keyboard;
         this.draw(); // the function draws is available with the comand in the console world.draw(), it causes that the characters are drawn in the canvas
         this.setWorld();
+        this.checkCollision();
     }
     
     
@@ -40,9 +40,6 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
-        
-
-
         
         let self = this;
         requestAnimationFrame(function(){
@@ -92,18 +89,21 @@ class World {
             mo.x = mo.x * -1;
         }
     }
-    /**
-     * This is the function to evaluete of the character enters the area of the enemy. In that is called an event named "collision"
-     * 
-     * @param {object} mo - it represents the movable-object, for example a chicken.
-     * @returns 
-     */
-    isColliding(mo){
-        return this.character.x + this.character.width > this.mo.x &&
-        this.character.y + this.character.height > this.mo.y &&
-        this.character.x < this.mo.x &&
-        this.character.y < this.mo.y
+
+    checkCollision(){
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if(this.character.isColliding(enemy)){
+                    console.log(this.character + ' und ' + enemy + ' haben kollidiert');
+                }
+            })
+
+        }, 500);
     }
+    
+    
+
+   
 
     
 
