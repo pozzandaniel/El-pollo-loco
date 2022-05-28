@@ -1,6 +1,7 @@
 class World {
     character = new Character();
     level = level1;
+  
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
@@ -36,6 +37,7 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+    
         this.ctx.translate(-this.camera_x, 0);
         
         let self = this;

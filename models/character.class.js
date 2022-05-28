@@ -73,7 +73,9 @@ class Character extends MovableObject{
                     // this.walking.play();
                 }
 
-                this.world.camera_x = -this.x +100;
+                
+                this.world.camera_x = -this.x +100; // when the character moves the camera gain the same amount but in the other direction. 100 only define the start position of the camera
+                
             });
             
             setInterval(() => {     // the character starts an animation without changing the position
