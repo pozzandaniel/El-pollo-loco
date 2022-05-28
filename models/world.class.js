@@ -4,10 +4,7 @@ class World {
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
-    chicken_1 = this.level.enemies[0];
-    chicken_2 = this.level.enemies[1];
-    chicken_3 = this.level.enemies[2];
-    big_Chicken = this.level.enemies[3];
+
     
     
     
@@ -94,12 +91,14 @@ class World {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy)){
-                    console.log(this.character + ' und ' + enemy + ' haben kollidiert');
+                    this.character.hit();
                 }
             })
 
         }, 500);
     }
+
+    
     
     
 

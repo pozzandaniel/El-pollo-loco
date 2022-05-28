@@ -9,6 +9,8 @@ class MovableObject{
     speed = 0.1;
     speedY = 0;
     acceleration = 2;
+    life = 100;
+    lastHit = 0;
     
 
     applyGravitation(){
@@ -16,8 +18,7 @@ class MovableObject{
             if(this.isAboveGround() || this.speedY > 0){
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
-                console.log('speedY =' + this.speedY);
-                console.log('Y =' + this.y);
+                
 
             }
         }, 1000/25);
@@ -38,6 +39,25 @@ class MovableObject{
         this.y + this.height > mo.y &&
         this.x < mo.x &&
         this.y < mo.y + mo.height
+    }
+
+    hit(){
+        this.life -= 5;
+        if(this.life < 0){
+            this.life = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHit(){
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed/1000;
+        return timepassed < 0.8;
+    }
+
+    isDead(){
+        return this.life == 0;
     }
     
 
