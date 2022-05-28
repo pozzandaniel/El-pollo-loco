@@ -67,9 +67,8 @@ class World {
 
         mo.draw(this.ctx);
         
-        if(mo == this.character || mo == this.chicken_1 || mo == this.chicken_2 || mo == this.chicken_3 || mo == this.big_Chicken){
-            mo.setRectangle(this.ctx);
-        } 
+        mo.setFrame(this.ctx);
+        
 
         this.flipImageBack(mo);
     }

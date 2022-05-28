@@ -62,14 +62,20 @@ class MovableObject{
     draw(ctx){
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
-
-    setRectangle(ctx){
-    
+    /**
+     * This function draw a rectangle outside the relative character and the enemies. It permits to detect easier a collition developed with an other function
+     * 
+     * @param {canvas} ctx - Is the context where a 2 dimensional world is drawn. This variable is transferred from the class world to the current page
+     */
+    setFrame(ctx){
+        if(this instanceof Character || this instanceof Chicken){
             ctx.beginPath();
             ctx.lineWidth = "4";
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.strokeStyle = "green";
             ctx.stroke();
+
+        }
 
         
     }
