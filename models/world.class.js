@@ -92,6 +92,18 @@ class World {
             mo.x = mo.x * -1;
         }
     }
+    /**
+     * This is the function to evaluete of the character enters the area of the enemy. In that is called an event named "collision"
+     * 
+     * @param {object} mo - it represents the movable-object, for example a chicken.
+     * @returns 
+     */
+    isColliding(mo){
+        return this.character.x + this.character.width > this.mo.x &&
+        this.character.y + this.character.height > this.mo.y &&
+        this.character.x < this.mo.x &&
+        this.character.y < this.mo.y
+    }
 
     
 
