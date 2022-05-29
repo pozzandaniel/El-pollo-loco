@@ -55,6 +55,7 @@ class Character extends MovableObject{
         this.animate();
         
         
+        
     }
 
     animate(){
@@ -105,9 +106,9 @@ class Character extends MovableObject{
         });
         
         
-        
-        
     }
+
+  
 
     
 }

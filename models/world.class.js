@@ -7,6 +7,9 @@ class World {
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
+    amountCoins = 100;
+    amountBottles = 100;
+    throwableObjects = [];
     
     
     canvas;
@@ -28,7 +31,7 @@ class World {
         this.keyboard = keyboard;
         this.draw(); // the function draws is available with the comand in the console world.draw(), it causes that the characters are drawn in the canvas
         this.setWorld();
-        this.checkCollision();
+        this.run();
     }
     
     
@@ -38,10 +41,11 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
-        this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE);
-        this.addFixedObject(this.coinsBar, this.coinsBar.IMAGES_COINS);
-        this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO);
+        this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE, this.character.life);
+        this.addFixedObject(this.coinsBar, this.coinsBar.IMAGES_COINS, this.amountCoins);
+        this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO, this.amountBottles);
         this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
@@ -75,9 +79,10 @@ class World {
         this.flipImageBack(mo);
     }
 
-    addFixedObject(fo, array){
+    addFixedObject(fo, array, percentage){
         fo.draw(this.ctx);
-        fo.setPercentage(this.character.life, array);
+        fo.setPercentage(percentage, array);
+    
     }
 
     setWorld(){
@@ -100,15 +105,29 @@ class World {
         }
     }
 
-    checkCollision(){
+    run(){
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if(this.character.isColliding(enemy)){
-                    this.character.hit();
-                }
-            })
+            this.checkCollisions();
+            this.checkThrows();
+        }, 100);
+        
+    }
+    
+    checkCollisions(){
+        
+        this.level.enemies.forEach((enemy) => {
+            if(this.character.isColliding(enemy)){
+                this.character.hit();
+               
+            }
+        })
+    }
 
-        }, 500);
+    checkThrows(){
+        if(this.keyboard.SPACE){
+            let bottle = new ThrowableObject(this.character.x, this.character.y +20);
+            this.throwableObjects.push(bottle);
+        }
     }
 
     
