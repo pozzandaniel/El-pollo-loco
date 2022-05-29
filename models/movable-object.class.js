@@ -37,7 +37,7 @@ class MovableObject extends DrawableObject{
 
     hit(){
         this.life -= 5;
-        this.world.statusBar.percentage -= 5;
+        
         if(this.life < 0){
             this.life = 0;
         } else {

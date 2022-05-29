@@ -4,27 +4,18 @@ class StatusBar extends DrawableObject {
     height= 60;
     width = 200;
     
-    IMAGES = [
-        'img/7.Marcadores/Barra/Marcador vida/verde/0_.png',
-        'img/7.Marcadores/Barra/Marcador vida/verde/20_.png',
-        'img/7.Marcadores/Barra/Marcador vida/verde/40_.png',
-        'img/7.Marcadores/Barra/Marcador vida/verde/60_.png',
-        'img/7.Marcadores/Barra/Marcador vida/verde/80_.png',
-        'img/7.Marcadores/Barra/Marcador vida/verde/100_.png'
-    ];
+    
+   constructor() {
+       super();
+   }
+  
 
-    constructor(){
-        super().loadImg('img/7.Marcadores/Barra/Marcador vida/azul/100_.png');
-        this.loadImages(this.IMAGES);
-        
-        
-    }
 
     percentage = 100;
 
-    setPercentage(percentage){
+    setPercentage(percentage, array){
         this.percentage = percentage;
-        let path = this.IMAGES[this.resolveImageIndex()];
+        let path = array[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 

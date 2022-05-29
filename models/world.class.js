@@ -1,20 +1,22 @@
 class World {
-    character = new Character();
+    keyboard;
     level = level1;
-    statusBar = new StatusBar();
+    coinsBar = new CoinsBar();
+    lifeBar = new LifeBar();
+    bottleBar = new BottleBar();
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
-
-    
-    
-    
     
     
     canvas;
     ctx;
-    keyboard;
     camera_x;
+    
+    character = new Character();
+    
+    
+    
     /**
      * This function starts at the beginning
      * 
@@ -36,7 +38,11 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
-        this.addFixedObject(this.statusBar);
+        this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
+        this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE);
+        this.addFixedObject(this.coinsBar, this.coinsBar.IMAGES_COINS);
+        this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO);
+        this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         
@@ -69,9 +75,9 @@ class World {
         this.flipImageBack(mo);
     }
 
-    addFixedObject(fo){
+    addFixedObject(fo, array){
         fo.draw(this.ctx);
-        fo.setPercentage(this.character.life);
+        fo.setPercentage(this.character.life, array);
     }
 
     setWorld(){

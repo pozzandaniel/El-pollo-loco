@@ -51,8 +51,8 @@ class Character extends MovableObject{
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
         this.jump();
-        this.animate();
         this.applyGravitation();
+        this.animate();
         
         
     }
@@ -60,7 +60,7 @@ class Character extends MovableObject{
     animate(){
         
             setInterval(() => {     //the character changes his position
-                this.walking.pause();    
+                // this.walking.pause();    
                 if(this.world.keyboard.RIGHT && this.x < this.world.end_game){
                     this.moveRight();
                         
@@ -75,7 +75,6 @@ class Character extends MovableObject{
 
                 
                 this.world.camera_x = -this.x +100; // when the character moves the camera gain the same amount but in the other direction. 100 only define the start position of the camera
-                this.world.statusBar.x = this.x -60;
                 
             });
             
