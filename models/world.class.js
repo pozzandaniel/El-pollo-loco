@@ -1,7 +1,7 @@
 class World {
     character = new Character();
     level = level1;
-  
+    statusBar = new StatusBar();
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
@@ -36,8 +36,8 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addFixedObject(this.statusBar);
         this.addToMap(this.character);
-    
         this.ctx.translate(-this.camera_x, 0);
         
         let self = this;
@@ -67,6 +67,11 @@ class World {
         
 
         this.flipImageBack(mo);
+    }
+
+    addFixedObject(fo){
+        fo.draw(this.ctx);
+        fo.setPercentage(this.character.life);
     }
 
     setWorld(){

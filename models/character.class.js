@@ -75,6 +75,7 @@ class Character extends MovableObject{
 
                 
                 this.world.camera_x = -this.x +100; // when the character moves the camera gain the same amount but in the other direction. 100 only define the start position of the camera
+                this.world.statusBar.x = this.x -60;
                 
             });
             

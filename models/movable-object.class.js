@@ -1,11 +1,5 @@
-class MovableObject{
-    x = 120;
-    y = 300;
-    img;
-    height = 150;
-    width = 100;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject{
+   
     speed = 0.1;
     speedY = 0;
     acceleration = 2;
@@ -43,6 +37,7 @@ class MovableObject{
 
     hit(){
         this.life -= 5;
+        this.world.statusBar.percentage -= 5;
         if(this.life < 0){
             this.life = 0;
         } else {
@@ -61,18 +56,9 @@ class MovableObject{
     }
     
 
-    loadImg(path){
-        this.img = new Image(); // this.img = document.getElementById('image') --> new Image() = <img>
-        this.img.src = path;    //document.getElementById('image').src --> `<img src="${path}">`;
-    }
+    
 
-    loadImages(arr){
-        arr.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
+ 
 
     moveRight() {
         this.x += this.speed;
@@ -92,9 +78,7 @@ class MovableObject{
         this.currentImage++;
     }
 
-    draw(ctx){
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    
     /**
      * This function draw a rectangle outside the relative character and the enemies. It permits to detect easier a collition developed with an other function
      * 
