@@ -14,6 +14,7 @@ class World {
     
     
     
+    
     canvas;
     ctx;
     camera_x;
@@ -54,6 +55,7 @@ class World {
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         
+        
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
@@ -63,9 +65,11 @@ class World {
 
     addObjectsToMap(objects){
         objects.forEach(o => {
-            this.addToMap(o);
-            
-        })
+            this.addToMap(o);  
+            this.checkStrike(o);
+        });
+
+        
     }
     /**
      * This function turn the image in the other direction if the property otherDirection is true. Then draw the object in the canvas.
@@ -121,6 +125,8 @@ class World {
     checkCollisions(){
         this.collectBottles();
         this.collectCoins();
+
+     
         
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)){
@@ -134,8 +140,24 @@ class World {
             let bottle = new ThrowableObject(this.character.x, this.character.y +20);
             this.throwableObjects.push(bottle);
             this.amountBottles -= 5;
+            
+            
         }
     }
+
+    checkStrike(o){
+        if(this.throwableObjects.includes(o)){
+            this.level.enemies.forEach((enemy) => {
+                if(o.isColliding(enemy)){
+                    console.log('strike');
+                }
+            })
+        }
+    }
+
+    
+    
+  
 
     collectBottles(){
         this.level.collectableObjects[0].bottles.forEach((bottle) => {
