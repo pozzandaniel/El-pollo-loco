@@ -130,9 +130,10 @@ class World {
     }
 
     checkThrows(){
-        if(this.keyboard.SPACE){
+        if(this.keyboard.SPACE && this.amountBottles > 0){
             let bottle = new ThrowableObject(this.character.x, this.character.y +20);
             this.throwableObjects.push(bottle);
+            this.amountBottles -= 5;
         }
     }
 
