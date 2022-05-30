@@ -12,6 +12,8 @@ class World {
     throwableObjects = [];
     
     
+    
+    
     canvas;
     ctx;
     camera_x;
@@ -41,6 +43,7 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.collectableObjects);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
         this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE, this.character.life);
