@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject{
     life = 100;
     lastHit = 0;
     
+    
 
     applyGravitation(){
         setInterval(() => {
@@ -59,7 +60,14 @@ class MovableObject extends DrawableObject{
         return this.life == 0;
     }
     
-
+    collectObj(obj){
+        if(obj == 'bottle'){
+            this.world.amountBottles += 5; 
+        }
+        if(obj == 'coin'){
+            this.world.amountCoins += 5; 
+        }
+    }
     
 
  

@@ -53,6 +53,7 @@ class Character extends MovableObject{
         this.jump();
         this.applyGravitation();
         this.animate();
+        this.collectObj();
         
         
         

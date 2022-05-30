@@ -7,10 +7,9 @@ class World {
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
-    amountCoins = 100;
-    amountBottles = 100;
     throwableObjects = [];
-    
+    amountCoins = 0;
+    amountBottles = 0;
     
     
     
@@ -44,7 +43,8 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.collectableObjects);
+        this.addObjectsToMap(this.level.collectableObjects[0].bottles);
+        this.addObjectsToMap(this.level.collectableObjects[0].coins);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
         this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE, this.character.life);
@@ -110,6 +110,7 @@ class World {
     }
 
     run(){
+        // this.collectObjects();
         setInterval(() => {
             this.checkCollisions();
             this.checkThrows();
@@ -118,12 +119,8 @@ class World {
     }
     
     checkCollisions(){
-
-        // this.level.collectableObjects.forEach((cObj) => {
-        //     if(this.character.isColliding(cObj)){
-
-        //     }
-        // })
+        this.collectBottles();
+        this.collectCoins();
         
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)){
@@ -139,6 +136,32 @@ class World {
         }
     }
 
+    collectBottles(){
+        this.level.collectableObjects[0].bottles.forEach((bottle) => {
+            if(this.character.isColliding(bottle)){
+                let array = this.level.collectableObjects[0].bottles;
+                let index = array.indexOf(bottle);
+                array.splice(index, 1);
+                this.character.collectObj('bottle');       
+            }
+        })
+    }
+
+    collectCoins(){
+        this.level.collectableObjects[0].coins.forEach((coin) => {
+            if(this.character.isColliding(coin)){
+                let array = this.level.collectableObjects[0].coins;
+                let index = array.indexOf(coin);
+                array.splice(index, 1);
+                this.character.collectObj('coin');       
+            }
+        })
+    }
+
+
+    // collectObjects(){
+        
+    // }
     
     
     
