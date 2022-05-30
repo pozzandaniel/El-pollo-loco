@@ -14,6 +14,7 @@ class World {
     
     
     
+    
     canvas;
     ctx;
     camera_x;
@@ -117,11 +118,16 @@ class World {
     }
     
     checkCollisions(){
+
+        // this.level.collectableObjects.forEach((cObj) => {
+        //     if(this.character.isColliding(cObj)){
+
+        //     }
+        // })
         
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)){
                 this.character.hit();
-               
             }
         })
     }
