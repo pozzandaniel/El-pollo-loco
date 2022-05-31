@@ -163,8 +163,11 @@ class World {
         if(this.throwableObjects.includes(o)){
             this.level.enemies.forEach((enemy) => {
                 if(o.isColliding(enemy)){
-                    let index = this.throwableObjects.indexOf(o);
-                    this.breakBottle(index);
+                    let indexBottle = this.throwableObjects.indexOf(o);
+                    let indexEnemy = this.level.enemies.indexOf(enemy);
+                    console.log(indexEnemy);
+                    this.breakBottle(indexBottle);
+                    this.killChicken(indexEnemy);
                     
                 }
             })
@@ -180,6 +183,19 @@ class World {
         imgCache2.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 8.png';
         imgCache3.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 9.png';
         imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
+    }
+
+    killChicken(index){
+        let indexEndboss = 4;
+        if(index != indexEndboss){
+            let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
+            let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
+            let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
+            imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+            imgCache2.src = imgCache1.src;
+            imgCache3.src = imgCache2.src;
+
+        }
     }
 
     
