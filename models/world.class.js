@@ -16,6 +16,7 @@ class World {
     
     
     
+    
     canvas;
     ctx;
     camera_x;
@@ -48,6 +49,7 @@ class World {
         this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
+        
         // Callback function -- continuous callback of the function draw();
         this.callBack();
      
@@ -59,13 +61,13 @@ class World {
             self.draw();
         })
     }
-
+    
     addStatusBar(){
         this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE, this.character.life);
         this.addFixedObject(this.coinsBar, this.coinsBar.IMAGES_COINS, this.amountCoins);
         this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO, this.amountBottles);
     }
-
+    
     addObjectsFromArray(){
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
@@ -74,13 +76,13 @@ class World {
         this.addObjectsToMap(this.level.collectableObjects[0].coins);
         this.addObjectsToMap(this.throwableObjects);
     }
-
+    
     addObjectsToMap(objects){
         objects.forEach(o => {
             this.addToMap(o);  
-            this.checkStrike(o);
+            this.changeBottleAnimation(o);
         });
-
+        
         
     }
     /**
@@ -90,7 +92,7 @@ class World {
      */
     addToMap(mo){
         this.flipImage(mo);
-
+        
         mo.draw(this.ctx);
         
         mo.setFrame(this.ctx);
@@ -98,13 +100,13 @@ class World {
 
         this.flipImageBack(mo);
     }
-
+    
     addFixedObject(fo, array, percentage){
         fo.draw(this.ctx);
         fo.setPercentage(percentage, array);
     
     }
-
+    
     setWorld(){
         this.character.world = this;
     
@@ -118,29 +120,33 @@ class World {
             mo.x = mo.x * -1;
         }
     }
-
+    
     flipImageBack(mo){
         if(mo.otherDirection){
             this.ctx.restore();
             mo.x = mo.x * -1;
         }
     }
-
+    
     run(){
         // this.collectObjects();
-        setInterval(() => {
+        setInterval(()=> {
             this.checkCollisions();
             this.checkThrows();
-        }, 100);
+        }, 200);
+        setInterval(()=> {
+            this.checkStrike();
+        }, 100)
+       
+
+        
+        
         
     }
     
     checkCollisions(){
         this.collectBottles();
         this.collectCoins();
-
-     
-        
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)){
                 this.character.hit();
@@ -156,22 +162,38 @@ class World {
             
             
             
+            
         }
     }
 
-    checkStrike(o){
+    changeBottleAnimation(o){
         if(this.throwableObjects.includes(o)){
             this.level.enemies.forEach((enemy) => {
                 if(o.isColliding(enemy)){
                     let indexBottle = this.throwableObjects.indexOf(o);
-                    let indexEnemy = this.level.enemies.indexOf(enemy);
-                    console.log(indexEnemy);
                     this.breakBottle(indexBottle);
-                    this.killChicken(indexEnemy);
+                    
+                   
+                    
                     
                 }
             })
         }
+    }
+
+    checkStrike(){
+        
+            let arrayEnemies = this.level.enemies;
+            let arrayBottles = this.throwableObjects;
+            arrayEnemies.forEach((enemy) => {
+                arrayBottles.forEach((bottle) => {
+                    if(bottle.isColliding(enemy)){
+                        console.log('Strike!');
+                    }
+                })
+            })
+
+        
     }
 
     breakBottle(index){
@@ -184,19 +206,38 @@ class World {
         imgCache3.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 9.png';
         imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
     }
+    // indexEndboss = this.level.enemies.length - 1;
 
-    killChicken(index){
-        let indexEndboss = 4;
-        if(index != indexEndboss){
-            let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
-            let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
-            let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
-            imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-            imgCache2.src = imgCache1.src;
-            imgCache3.src = imgCache2.src;
+    // killChicken(index){
+    //     if(index != this.indexEndboss){
+            
+    //         this.spliceChickenFromArray(index);
+    //     }
+        
+    // }
+    
+    // chickenEndAnimation(index){
+    //     if(index != this.indexEndboss){
+    //         let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
+    //         let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
+    //         let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
+    //         imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+    //         imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+    //         imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+            
 
-        }
-    }
+    //     }
+
+        
+    // }
+
+    // spliceChickenFromArray(index){
+    //     let arrayEnemies = this.level.enemies;
+    //     arrayEnemies.splice(index, 1);
+    //     this.indexEndboss -= 1;
+        
+    
+    // }
 
     
     
