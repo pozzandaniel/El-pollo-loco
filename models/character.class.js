@@ -101,7 +101,9 @@ class Character extends MovableObject{
         
         setInterval(() => {
             if(this.world.keyboard.UP && !this.isAboveGround()){
-                this.speedY = 30;   
+                this.speedY = 30; 
+ 
+           
             }
 
         });

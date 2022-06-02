@@ -72,6 +72,7 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.monster);
         this.addObjectsToMap(this.level.collectableObjects[0].bottles);
         this.addObjectsToMap(this.level.collectableObjects[0].coins);
         this.addObjectsToMap(this.throwableObjects);
@@ -129,31 +130,63 @@ class World {
     }
     
     run(){
-        // this.collectObjects();
-        setInterval(()=> {
-            this.checkCollisions();
-            this.checkThrows();
-        }, 200);
-        setInterval(()=> {
-            this.checkStrike();
-        }, 100)
-       
-
         
-        
-        
+        this.checkCollisionsCharacterVSEnemy();
+        this.checkCollisionsCharacterVSObjects();
+        this.checkCollisionsObjectVSEnemy();
+             
     }
     
-    checkCollisions(){
-        this.collectBottles();
-        this.collectCoins();
-        this.level.enemies.forEach((enemy) => {
-            if(this.character.isColliding(enemy)){
-                this.character.hit();
-            }
-        })
+    checkCollisionsCharacterVSEnemy(){
+        setInterval(()=> {
+            this.level.enemies.forEach((enemy)=> {
+                let indexEnemy = this.level.enemies.indexOf(enemy);
+                // let idEnemy = enemy.id;
+                if(this.character.isColliding(enemy)){
+                    if(this.character.isAttacking(enemy)){
+                        this.squashChicken(indexEnemy);
+                        console.log(indexEnemy, ' suashed')
+                        
+                    } else {
+                        this.character.hit();
+                        console.log(indexEnemy, ' hit')
+                        
+                    }
+                } 
+            }) 
+        }, 300);
+            
     }
 
+    squashChicken(index){
+        this.chickenEndAnimation(index);
+        setTimeout(()=> {
+            this.spliceChickenFromArray(index);
+
+        }, 100);
+    }
+
+        
+    checkCollisionsCharacterVSObjects(){
+        setInterval(() => {
+            this.collectBottles();
+            this.collectCoins();
+
+        }, 100);
+            
+    }
+
+    checkCollisionsObjectVSEnemy(){
+        setInterval(()=>{
+            this.checkThrows();
+        }, 300);
+        setInterval(()=> {
+            this.checkStrike();
+            
+        }, 200);
+    }
+    
+    
     checkThrows(){
         if(this.keyboard.SPACE && this.amountBottles > 0){
             let bottle = new ThrowableObject(this.character.x, this.character.y +20);
@@ -165,13 +198,35 @@ class World {
             
         }
     }
+    
+    checkStrike(){
+        
+        let arrayEnemies = this.level.enemies;
+        let arrayBottles = this.throwableObjects;
+        arrayEnemies.forEach((enemy) => {
+            let indexEnemy = this.level.enemies.indexOf(enemy); 
+            arrayBottles.forEach((bottle) => {
+                if(bottle.isColliding(enemy)){
+                    this.killChicken(indexEnemy);
+                    console.log('idEnemy: ',idEnemy, ' is killed')
+                    console.log('indexEnemy: ',indexEnemy, ' is killed')
+                  
 
+                    
+                }
+            })
+        })
+        
+        
+    }
+    
     changeBottleAnimation(o){
         if(this.throwableObjects.includes(o)){
             this.level.enemies.forEach((enemy) => {
                 if(o.isColliding(enemy)){
                     let indexBottle = this.throwableObjects.indexOf(o);
-                    let indexEnemy = this.level.enemies.indexOf(enemy);
+                    // let indexChicken = this.level.enemies.indexOf(enemy);
+                    
                     this.breakBottle(indexBottle);
                     
                     
@@ -183,21 +238,17 @@ class World {
         }
     }
 
-    checkStrike(){
-        
-            let arrayEnemies = this.level.enemies;
-            let arrayBottles = this.throwableObjects;
-            arrayEnemies.forEach((enemy) => {
-                arrayBottles.forEach((bottle) => {
-                    if(bottle.isColliding(enemy)){
-                        let indexEnemy = this.level.enemies.indexOf(enemy);
-                        this.killChicken(indexEnemy);
-                        
-                    }
-                })
-            })
+ 
+    
+    killChicken(index){
+ 
+        this.chickenEndAnimation(index)
+        setTimeout(()=>{
+            this.spliceChickenFromArray(index);
 
+        }, 200);
         
+       
     }
 
     breakBottle(index){
@@ -211,43 +262,42 @@ class World {
         imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
     }
 
-    indexEndboss = 4;
-    killChicken(index){
-        if(index != this.indexEndboss){
-            this.chickenEndAnimation(index);
-            setTimeout(() =>{
-                this.spliceChickenFromArray(index);
-            }, 500);
-            this.indexEndboss--;
-        }
-        
-    }
+    
     
     chickenEndAnimation(index){
-        if(index != this.indexEndboss){
-            let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
-            let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
-            let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
-            imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-            imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-            imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+        
+                let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
+                let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
+                let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
+                imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+                imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+                imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
             
+    
 
-        }
+        
+                
+        
+
+        
 
         
     }
+    
 
     spliceChickenFromArray(index){
-        let arrayEnemies = this.level.enemies;
-        arrayEnemies.splice(index, 1);
+        
+            let arrayEnemies = this.level.enemies;
+            // let ID = arrayEnemies[index].id;
+            arrayEnemies.splice(index, 1);
+            console.log(index, 'is not in array more')
+            // console.log(ID, ' ID is not in array more')
+
         
         
     
     }
 
-    
-    
   
 
     collectBottles(){
