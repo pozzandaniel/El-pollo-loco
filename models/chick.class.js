@@ -1,17 +1,17 @@
-class Chicken extends MovableObject {
+class Chick extends MovableObject {
     id;
     y = 350;
     height = 80;
     width = 66;
     chicken_audio = new Audio('./audio/chicken.mp3')
     IMAGES_WALKING = [
-        'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png',
-        'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png',
-        'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'
+        'img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',
+        'img/3.Secuencias_Enemy_básico/Versión_pollito/2.Centro.png',
+        'img/3.Secuencias_Enemy_básico/Versión_pollito/3.Paso_izquierdo.png'
     ];
     constructor(id){
         super().loadImg('../img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png')
-        this.x = 800 + Math.random() * 2500;
+        this.x = 1000 + Math.random() * 2500;
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
         this.speed = 0.10 + Math.random() * 0.25;
@@ -35,9 +35,4 @@ class Chicken extends MovableObject {
         
        
     }
-
-  
-
-   
-
 }

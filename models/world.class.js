@@ -141,10 +141,9 @@ class World {
         setInterval(()=> {
             this.level.enemies.forEach((enemy)=> {
                 let indexEnemy = this.level.enemies.indexOf(enemy);
-                // let idEnemy = enemy.id;
                 if(this.character.isColliding(enemy)){
                     if(this.character.isAttacking(enemy)){
-                        this.squashChicken(indexEnemy);
+                        this.squashChicken(indexEnemy, enemy);
                         console.log(indexEnemy, ' suashed')
                         
                     } else {
@@ -158,12 +157,17 @@ class World {
             
     }
 
-    squashChicken(index){
-        this.chickenEndAnimation(index);
-        setTimeout(()=> {
-            this.spliceChickenFromArray(index);
+    squashChicken(index, enemy){
+        if(enemy instanceof Chicken){
+            this.chickenEndAnimation(enemy);
 
-        }, 100);
+        } else {
+            this.chickEndAnimation(enemy);
+        }
+        setTimeout(()=> {
+            this.spliceChickenFromArray(enemy);
+
+        }, 300);
     }
 
         
@@ -179,7 +183,7 @@ class World {
     checkCollisionsObjectVSEnemy(){
         setInterval(()=>{
             this.checkThrows();
-        }, 300);
+        }, 200);
         setInterval(()=> {
             this.checkStrike();
             
@@ -193,9 +197,6 @@ class World {
             this.throwableObjects.push(bottle);
             this.amountBottles -= 5;
             
-            
-            
-            
         }
     }
     
@@ -207,12 +208,8 @@ class World {
             let indexEnemy = this.level.enemies.indexOf(enemy); 
             arrayBottles.forEach((bottle) => {
                 if(bottle.isColliding(enemy)){
-                    this.killChicken(indexEnemy);
-                    console.log('idEnemy: ',idEnemy, ' is killed')
-                    console.log('indexEnemy: ',indexEnemy, ' is killed')
-                  
-
-                    
+                    this.killChicken(indexEnemy, enemy);
+                    console.log('indexEnemy: ',indexEnemy, ' is killed')    
                 }
             })
         })
@@ -220,73 +217,51 @@ class World {
         
     }
     
-    changeBottleAnimation(o){
-        if(this.throwableObjects.includes(o)){
-            this.level.enemies.forEach((enemy) => {
-                if(o.isColliding(enemy)){
-                    let indexBottle = this.throwableObjects.indexOf(o);
-                    // let indexChicken = this.level.enemies.indexOf(enemy);
-                    
-                    this.breakBottle(indexBottle);
-                    
-                    
-                   
-                    
-                    
-                }
-            })
-        }
-    }
-
- 
     
-    killChicken(index){
- 
-        this.chickenEndAnimation(index)
-        setTimeout(()=>{
-            this.spliceChickenFromArray(index);
+    
+    
+    killChicken(index, enemy){
+        if(enemy instanceof Chicken){
+            this.chickenEndAnimation(enemy)
 
-        }, 200);
+        } else {
+            this.chickEndAnimation(enemy);
+        }
+        setTimeout(()=>{
+            this.spliceChickenFromArray(enemy);
+
+        }, 300);
         
        
     }
 
-    breakBottle(index){
-        let imgCache1 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png'];
-        let imgCache2 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 4.png'];
-        let imgCache3 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 5.png'];
-        let imgCache4 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 6.png'];
-        imgCache1.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 7.png';
-        imgCache2.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 8.png';
-        imgCache3.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 9.png';
-        imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
+    
+    
+    
+    chickenEndAnimation(enemy){
+        let index = this.level.enemies.indexOf(enemy);
+
+        let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
+        let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
+        let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
+        imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+        imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
+        imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';  
     }
-
     
-    
-    chickenEndAnimation(index){
-        
-                let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png'];
-                let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png'];
-                let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/3.Ga_paso izquierdo.png'];
-                imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-                imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-                imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png';
-            
-    
-
-        
-                
-        
-
-        
-
-        
+    chickEndAnimation(enemy){
+        let index = this.level.enemies.indexOf(enemy);
+        let imgCache1 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png'];
+        let imgCache2 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_pollito/2.Centro.png'];
+        let imgCache3 = this.level.enemies[index].imageCache['img/3.Secuencias_Enemy_básico/Versión_pollito/3.Paso_izquierdo.png'];
+        imgCache1.src = 'img/3.Secuencias_Enemy_básico/Versión_pollito/4.Muerte.png';
+        imgCache2.src = 'img/3.Secuencias_Enemy_básico/Versión_pollito/4.Muerte.png';
+        imgCache3.src = 'img/3.Secuencias_Enemy_básico/Versión_pollito/4.Muerte.png';  
     }
     
 
-    spliceChickenFromArray(index){
-        
+    spliceChickenFromArray(enemy){
+            let index = this.level.enemies.indexOf(enemy);
             let arrayEnemies = this.level.enemies;
             // let ID = arrayEnemies[index].id;
             arrayEnemies.splice(index, 1);
@@ -322,15 +297,32 @@ class World {
         })
     }
 
-
-    // collectObjects(){
-        
-    // }
+    
+    changeBottleAnimation(o){
+        if(this.throwableObjects.includes(o)){
+            this.level.enemies.forEach((enemy) => {
+                if(o.isColliding(enemy)){
+                    let indexBottle = this.throwableObjects.indexOf(o);                    
+                    this.breakBottle(indexBottle); 
+                }
+            })
+        }
+    }
+    
+    
+    breakBottle(index){
+        let imgCache1 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png'];
+        let imgCache2 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 4.png'];
+        let imgCache3 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 5.png'];
+        let imgCache4 = this.throwableObjects[index].imageCache['img/6.botella/Rotación/Mesa de trabajo 1 copia 6.png'];
+        imgCache1.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 7.png';
+        imgCache2.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 8.png';
+        imgCache3.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 9.png';
+        imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
+    }
     
     
     
-
-   
 
     
 
@@ -340,7 +332,7 @@ class World {
     //         this.soundtrack_audio.play();
     //     }, 28000);    
     
-       
+    
     // }
     
 }
