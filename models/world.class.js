@@ -4,12 +4,14 @@ class World {
     coinsBar = new CoinsBar();
     lifeBar = new LifeBar();
     bottleBar = new BottleBar();
+    // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
     end_game = 719*4;
     soundtrack_audio = new Audio('./audio/soundtrack.mp3');
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;
+    monster = this.level.monster[0] = new Endboss();
     
     
     
@@ -44,6 +46,7 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // This function delete the old image after we change the coordinate of a character
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsFromArray();
+        this.addToMap(this.monster);
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
         this.addStatusBar();
         this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
@@ -52,9 +55,9 @@ class World {
         
         // Callback function -- continuous callback of the function draw();
         this.callBack();
-     
+        
     }
-
+    
     callBack(){
         let self = this;
         requestAnimationFrame(function(){
@@ -63,16 +66,18 @@ class World {
     }
     
     addStatusBar(){
+        // this.addFixedObject(this.lifeBarEndboss, this.lifeBarEndboss.IMAGES_LIFE_ENEMY, this.monster.life);
+        this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO, this.amountBottles);
         this.addFixedObject(this.lifeBar, this.lifeBar.IMAGES_LIFE, this.character.life);
         this.addFixedObject(this.coinsBar, this.coinsBar.IMAGES_COINS, this.amountCoins);
-        this.addFixedObject(this.bottleBar, this.bottleBar.IMAGES_TABASCO, this.amountBottles);
+        
     }
     
     addObjectsFromArray(){
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.monster);
+        // this.addObjectsToMap(this.level.monster);
         this.addObjectsToMap(this.level.collectableObjects[0].bottles);
         this.addObjectsToMap(this.level.collectableObjects[0].coins);
         this.addObjectsToMap(this.throwableObjects);
@@ -110,6 +115,7 @@ class World {
     
     setWorld(){
         this.character.world = this;
+        this.level.monster[0].world = this;
     
     }
 
@@ -134,6 +140,8 @@ class World {
         this.checkCollisionsCharacterVSEnemy();
         this.checkCollisionsCharacterVSObjects();
         this.checkCollisionsObjectVSEnemy();
+        this.checkCollisionsCharacterVSEndboss();
+        
              
     }
     
@@ -185,7 +193,9 @@ class World {
             this.checkThrows();
         }, 200);
         setInterval(()=> {
-            this.checkStrike();
+            this.checkStrikeAgainstChicken();
+            this.checkStrikeAgainstEndboss();
+
             
         }, 200);
     }
@@ -200,7 +210,7 @@ class World {
         }
     }
     
-    checkStrike(){
+    checkStrikeAgainstChicken(){
         
         let arrayEnemies = this.level.enemies;
         let arrayBottles = this.throwableObjects;
@@ -215,6 +225,16 @@ class World {
         })
         
         
+    }
+
+    checkStrikeAgainstEndboss(){
+        let arrayBottles = this.throwableObjects;
+        arrayBottles.forEach((bottle) => {
+            if(bottle.isColliding(this.monster)){
+                this.hitEndboss();
+              
+            }
+        })
     }
     
     
@@ -233,6 +253,11 @@ class World {
         }, 300);
         
        
+    }
+
+    hitEndboss(){
+        this.monster.lastHit = new Date().getTime();
+        this.monster.life -= 5;
     }
 
     
@@ -307,6 +332,11 @@ class World {
                 }
             })
         }
+
+        if(this.throwableObjects.includes(o) && o.isColliding(this.monster)){
+            let indexBottle = this.throwableObjects.indexOf(o);                    
+                    this.breakBottle(indexBottle); 
+        }
     }
     
     
@@ -320,8 +350,20 @@ class World {
         imgCache3.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 9.png';
         imgCache4.src = 'img/6.botella/Rotación/Splash de salsa/Mesa de trabajo 1 copia 10.png';
     }
+
     
-    
+    checkCollisionsCharacterVSEndboss(){
+        setInterval(()=> {
+            let endboss = this.level.monster[0]
+            if(this.character.isColliding(endboss)){
+                    
+                this.character.bigHit();
+                              
+            } 
+             
+        }, 300);    
+    }
+  
     
 
     

@@ -1,4 +1,5 @@
 class Character extends MovableObject{
+    world;
     height = 220;
     width = 150;
     y = 210;
@@ -43,7 +44,6 @@ class Character extends MovableObject{
         'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png',
     ];
     
-    world;
     constructor(){
         super().loadImg('../img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -87,12 +87,13 @@ class Character extends MovableObject{
                     this.playAnimation(this.IMAGES_HURT);
                 } else if(this.isAboveGround()){
                     this.playAnimation(this.IMAGES_JUMPING);
+                    
                 } else {
                     if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
                             this.playAnimation(this.IMAGES_WALKING);
                     }
                 }
-            }, 100);
+            }, 110);
 
         
     }

@@ -2,6 +2,7 @@ class MovableObject extends DrawableObject{
    
     speed = 0.1;
     speedY = 0;
+    speedX = 0;
     acceleration = 2;
     life = 100;
     lastHit = 0;
@@ -45,6 +46,16 @@ class MovableObject extends DrawableObject{
 
     isAttacking(mo){
         return this.x + this.width > mo.x + mo.width && this.x < mo.x
+    }
+
+    bigHit(){
+        this.life -= 10;
+
+        if(this.life < 0){
+            this.life = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
     }
 
     hit(){
