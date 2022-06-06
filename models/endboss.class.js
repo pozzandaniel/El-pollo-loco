@@ -83,6 +83,8 @@ class Endboss extends MovableObject {
                 i++; 
                 if(i % this.IMAGES_ATTACK.length == 12){
                   this.attack();
+                  let audioBigChicken = new Audio(this.audio[1]).play();
+                  
                    
                 }else if(i % this.IMAGES_ATTACK.length == 14){
                   this.back();

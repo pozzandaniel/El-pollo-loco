@@ -4,8 +4,10 @@ class Character extends MovableObject{
     width = 150;
     y = 210;
     speed = 2;
-    walking = new Audio('./audio/walking.mp3');
+
     otherDirection = false;
+    start;
+    sleep;
    
 
     IMAGES_PACEFUL = [
@@ -118,10 +120,10 @@ class Character extends MovableObject{
                     this.waiting();
                     this.playAnimation(this.IMAGES_HURT);
                 } else if(this.isAboveGround()){
-                    this.playAnimation(this.IMAGES_JUMPING);  
+                    this.playAnimation(this.IMAGES_JUMPING); 
                 
                 } else  if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-                    this.waiting();
+                    this.waiting(); 
                     this.playAnimation(this.IMAGES_WALKING);
                 } else if(this.characterAnnoyed){
                     this.playAnimation(this.IMAGES_PACEFUL);
@@ -141,16 +143,20 @@ class Character extends MovableObject{
         setInterval(() => {
             if(this.world.keyboard.UP && !this.isAboveGround()){
                 this.waiting();
+                console.log('jump')
+                let audioJump = new Audio(this.audio[4]).play(); 
 
-                
                 this.speedY = 30;
-                
-                
- 
-           
             }
 
-        });
+        }, 200);
+        // setInterval(()=>{
+        //     if(this.world.keyboard.UP){
+
+        //     }
+
+        // }, 800)
+
         
         
     }
@@ -158,14 +164,14 @@ class Character extends MovableObject{
     waiting(){
         this.characterAnnoyed = false;
         this.characterSpleept = false;
-        let start;
-        let sleep;
-        clearTimeout(start)
-        clearTimeout(sleep)
-        start = setTimeout(() => {
+       
+        clearTimeout(this.start)
+        clearTimeout(this.sleep)
+        this.start = setTimeout(() => {
+        
             this.characterAnnoyed = true
-        }, 3000);
-        sleep = setTimeout(()=> {
+        }, 500);
+        this.sleep = setTimeout(()=> {
             this.characterAnnoyed = false;
             this.characterSpleept = true;
         }, 6000)

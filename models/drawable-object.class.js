@@ -6,6 +6,8 @@ class DrawableObject {
     width = 100;
     imageCache = {};
     currentImage = 0;
+    audio = ['audio/chicken.mp3', 'audio/chick.wav', 'audio/morenita.mp3', 'audio/smashglass.wav', 'audio/jump.wav'];    
+
 
     loadImg(path){
         this.img = new Image(); // this.img = document.getElementById('image') --> new Image() = <img>

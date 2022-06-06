@@ -7,11 +7,12 @@ class World {
     // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
     end_game = 719*4;
-    soundtrack_audio = new Audio('./audio/soundtrack.mp3');
+    audio = ['audio/chicken.mp3', 'audio/chick.wav', 'audio/morenita.mp3', 'audio/smashglass.wav', 'audio/jump.wav'];    
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;
     monster = this.level.monster[0] = new Endboss();
+
    
     
     
@@ -40,6 +41,7 @@ class World {
         this.draw(); // the function draws is available with the comand in the console world.draw(), it causes that the characters are drawn in the canvas
         this.setWorld();
         this.run();
+        
     }
     
     
@@ -155,8 +157,11 @@ class World {
                 let indexEnemy = this.level.enemies.indexOf(enemy);
                 if(this.character.isColliding(enemy)){
                     if(this.character.isAttacking(enemy)){
-                        this.squashChicken(indexEnemy, enemy);
-                        console.log(indexEnemy, ' suashed')
+                        
+                            this.squashChicken(enemy);
+                            console.log(indexEnemy, ' suashed')
+
+                        
                         
                     } else {
                         this.character.hit();
@@ -165,16 +170,18 @@ class World {
                     }
                 } 
             }) 
-        }, 300);
+        }, 400);
             
     }
 
-    squashChicken(index, enemy){
+    squashChicken(enemy){
         if(enemy instanceof Chicken){
             this.chickenEndAnimation(enemy);
+            let audioChicken = new Audio(this.audio[0]).play();
 
         } else {
             this.chickEndAnimation(enemy);
+            let audioChick = new Audio(this.audio[0]).play();
         }
         setTimeout(()=> {
             this.spliceChickenFromArray(enemy);
@@ -210,6 +217,12 @@ class World {
             let bottle = new ThrowableObject(this.character.x, this.character.y +20);
             this.throwableObjects.push(bottle);
             this.amountBottles -= 5;
+            this.character.waiting();
+            setTimeout(() => {
+                let bottle_smash = new Audio(this.audio[3]).play();   
+
+            }, 500)
+
             
         }
     }
@@ -223,7 +236,7 @@ class World {
             arrayBottles.forEach((bottle) => {
                 if(bottle.isColliding(enemy)){
                     this.killChicken(indexEnemy, enemy);
-                    console.log('indexEnemy: ',indexEnemy, ' is killed')    
+                    console.log('indexEnemy: ',indexEnemy, ' is killed') 
                 }
             })
         })
@@ -247,9 +260,11 @@ class World {
     killChicken(index, enemy){
         if(enemy instanceof Chicken){
             this.chickenEndAnimation(enemy)
+            let audioChicken = new Audio(this.audio[0]).play();
 
         } else {
             this.chickEndAnimation(enemy);
+            let audioChick = new Audio(this.audio[0]).play();
         }
         setTimeout(()=>{
             this.spliceChickenFromArray(enemy);
@@ -333,6 +348,7 @@ class World {
                 if(o.isColliding(enemy)){
                     let indexBottle = this.throwableObjects.indexOf(o);                    
                     this.breakBottle(indexBottle); 
+                    
                 }
             })
         }
