@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject{
     acceleration = 2;
     life = 100;
     lastHit = 0;
+    lastJump = 0;
     
     
     
@@ -70,6 +71,12 @@ class MovableObject extends DrawableObject{
 
     isHit(){
         let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed/1000;
+        return timepassed < 0.8;
+    }
+    
+    isJump(){
+        let timepassed = new Date().getTime() - this.lastJump;
         timepassed = timepassed/1000;
         return timepassed < 0.8;
     }

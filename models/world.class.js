@@ -12,6 +12,7 @@ class World {
     amountCoins = 0;
     amountBottles = 0;
     monster = this.level.monster[0] = new Endboss();
+   
     
     
     
@@ -141,9 +142,12 @@ class World {
         this.checkCollisionsCharacterVSObjects();
         this.checkCollisionsObjectVSEnemy();
         this.checkCollisionsCharacterVSEndboss();
+       
         
              
     }
+
+   
     
     checkCollisionsCharacterVSEnemy(){
         setInterval(()=> {
