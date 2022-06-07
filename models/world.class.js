@@ -7,7 +7,7 @@ class World {
     // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
     end_game = 719*4;
-    audio = ['audio/chicken.mp3', 'audio/chick.wav', 'audio/morenita.mp3', 'audio/smashglass.wav', 'audio/jump.wav'];    
+    audio = ['./audio/chicken.mp3', './audio/chick.wav', './audio/morenita.mp3', './audio/smashglass.wav', './audio/jump.wav', './audio/yawn.wav'];    
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;

@@ -130,6 +130,8 @@ class Character extends MovableObject{
                
                 } else if(this.characterSpleept){
                     this.playAnimation(this.IMAGES_SLEEPING);
+
+                    
                 }
                    
                 
@@ -150,12 +152,7 @@ class Character extends MovableObject{
             }
 
         }, 200);
-        // setInterval(()=>{
-        //     if(this.world.keyboard.UP){
-
-        //     }
-
-        // }, 800)
+     
 
         
         
@@ -174,6 +171,8 @@ class Character extends MovableObject{
         this.sleep = setTimeout(()=> {
             this.characterAnnoyed = false;
             this.characterSpleept = true;
+            let audioSleeping = new Audio(this.audio[5]).play();
+
         }, 6000)
         
     }
