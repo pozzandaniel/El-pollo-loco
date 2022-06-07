@@ -96,6 +96,10 @@ class Endboss extends MovableObject {
             
             if(this.isHit() && this.dead == false){
                 this.playAnimation(this.IMAGES_HURT);
+                
+                let audioHitted = new Audio(this.audio[8]).play()
+
+                
                 console.log(this.life);
 
             } 

@@ -7,7 +7,7 @@ class World {
     // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
     end_game = 719*4;
-    audio = ['./audio/chicken.mp3', './audio/chick.wav', './audio/morenita.mp3', './audio/smashglass.wav', './audio/jump.wav', './audio/yawn.wav'];    
+    audio = ['./audio/chicken.mp3', './audio/chick.wav', './audio/morenita.mp3', './audio/smashglass.wav', './audio/jump.wav', './audio/yawn.wav', './audio/hit.wav', './audio/dead.mp3', './audio/chicken_pain.wav', './audio/collectcoin.wav'];    
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;
@@ -165,6 +165,10 @@ class World {
                         
                     } else {
                         this.character.hit();
+                
+
+                       
+
                         console.log(indexEnemy, ' hit')
                         
                     }
@@ -218,10 +222,7 @@ class World {
             this.throwableObjects.push(bottle);
             this.amountBottles -= 5;
             this.character.waiting();
-            setTimeout(() => {
-                let bottle_smash = new Audio(this.audio[3]).play();   
-
-            }, 500)
+           
 
             
         }
@@ -336,7 +337,8 @@ class World {
                 let array = this.level.collectableObjects[0].coins;
                 let index = array.indexOf(coin);
                 array.splice(index, 1);
-                this.character.collectObj('coin');       
+                this.character.collectObj('coin');
+                let collectAudio = new Audio(this.audio[9]).play();       
             }
         })
     }

@@ -50,20 +50,34 @@ class MovableObject extends DrawableObject{
     }
 
     bigHit(){
-        this.life -= 10;
+            this.life -= 10;
+            let soundHit = new Audio(this.audio[6]).play();
+
+        
+
 
         if(this.life < 0){
             this.life = 0;
+
         } else {
             this.lastHit = new Date().getTime();
         }
     }
 
     hit(){
-        this.life -= 5;
         
-        if(this.life < 0){
+       
+        this.life -= 5;
+        let soundHit = new Audio(this.audio[6]).play();
+
+    
+
+
+        if(this.life < 0 ){
             this.life = 0;
+            
+
+
         } else {
             this.lastHit = new Date().getTime();
         }
@@ -74,6 +88,9 @@ class MovableObject extends DrawableObject{
         timepassed = timepassed/1000;
         return timepassed < 0.8;
     }
+
+   
+ 
     
     isJump(){
         let timepassed = new Date().getTime() - this.lastJump;
@@ -84,6 +101,10 @@ class MovableObject extends DrawableObject{
     isDead(){
         return this.life == 0;
     }
+
+  
+
+    
     
     collectObj(obj){
         if(obj == 'bottle'){
