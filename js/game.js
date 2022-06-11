@@ -1,42 +1,53 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let soundtrack_audio;
 
 function init(){
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-   
+}
+
+function startGame(){
+    soundtrack_audio = new Audio('./audio/morenita.mp3').play();
+    document.getElementsByClassName('game')[0].classList.remove('d-none');
+    document.getElementsByClassName('start-site')[0].classList.add('d-none');
+    init();
     
     
 }
 
 
 
+
+
 document.addEventListener('keydown', (e) => {
     
-    if(e.keyCode == 32){
-        keyboard.SPACE = true;
-    }
+        if(e.keyCode == 32){
+            keyboard.SPACE = true;
+        }
+    
+        if(e.keyCode == 40){
+            keyboard.DOWN = true;
+        }
+    
+        if(e.keyCode == 39){
+            keyboard.RIGHT = true;
+        }
+    
+        if(e.keyCode == 37){
+            keyboard.LEFT = true;
+        }
+    
+        if(e.keyCode == 38){
+            keyboard.UP = true;
+        }
 
-    if(e.keyCode == 40){
-        keyboard.DOWN = true;
-    }
-
-    if(e.keyCode == 39){
-        keyboard.RIGHT = true;
-    }
-
-    if(e.keyCode == 37){
-        keyboard.LEFT = true;
-    }
-
-    if(e.keyCode == 38){
-        keyboard.UP = true;
-    }
+    
+    
      
 });
 document.addEventListener('keyup', (e) => {
-   
     if(e.keyCode == 32){
         keyboard.SPACE = false;
     }
@@ -56,6 +67,7 @@ document.addEventListener('keyup', (e) => {
     if(e.keyCode == 38){
         keyboard.UP = false;
     }
+   
      
 });
 

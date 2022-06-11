@@ -53,6 +53,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 3000;   
         this.animate();
+        this.gameOver();
 
 
     }
@@ -130,5 +131,26 @@ class Endboss extends MovableObject {
     stop(){
         clearInterval(this.endbossBack);
     }
-    
+
+    gameOver(){
+        setInterval(()=>{
+            if(this.life <= 0){
+                setTimeout(()=>{
+                    this.endAnimationGameOver()
+
+                }, 4000)
+            }
+
+        }, 1000/60)
+        
+        
+    }
+    endAnimationGameOver(){
+        let imgCache1 = this.imageCache['img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png'];
+        let imgCache2 = this.imageCache['img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png'];
+        let imgCache3 = this.imageCache['img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png'];
+        imgCache1.src = 'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png';
+        imgCache2.src = 'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png';
+        imgCache3.src = 'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png';  
+    }
 }

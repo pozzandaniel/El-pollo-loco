@@ -4,9 +4,11 @@ class MovableObject extends DrawableObject{
     speedY = 0;
     speedX = 0;
     acceleration = 2;
-    life = 100;
+    
     lastHit = 0;
     lastJump = 0;
+
+    
     
     
     
@@ -27,6 +29,7 @@ class MovableObject extends DrawableObject{
             return true;
         } else {
             return this.y < 210;
+           
         }
     }
 
@@ -37,10 +40,16 @@ class MovableObject extends DrawableObject{
      * @returns 
      */
     isColliding(mo){
-        return this.x + this.width > mo.x &&
-        this.y + this.height > mo.y &&
-        this.x < mo.x + mo.width &&
-        this.y < mo.y + mo.height
+        if(this.life > 0){
+            return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x + mo.width &&
+            this.y < mo.y + mo.height
+
+        } else {
+            return false;
+        }
+        
     }
 
   
@@ -50,8 +59,11 @@ class MovableObject extends DrawableObject{
     }
 
     bigHit(){
-            this.life -= 10;
-            let soundHit = new Audio(this.audio[6]).play();
+     
+            this.life -= 50;
+            let soundHit = new Audio('audio/hit.wav').play();
+
+        
 
         
 
@@ -68,7 +80,7 @@ class MovableObject extends DrawableObject{
         
        
         this.life -= 5;
-        let soundHit = new Audio(this.audio[6]).play();
+        let soundHit = new Audio('audio/hit.wav').play();
 
     
 
@@ -84,15 +96,21 @@ class MovableObject extends DrawableObject{
     }
 
     isHit(){
-        let timepassed = new Date().getTime() - this.lastHit;
-        timepassed = timepassed/1000;
-        return timepassed < 0.8;
+        if(this.life > 0){
+
+            let timepassed = new Date().getTime() - this.lastHit;
+            timepassed = timepassed/1000;
+            return timepassed < 0.8;
+        } else {
+            return false;
+        }
     }
 
    
  
     
     isJump(){
+       
         let timepassed = new Date().getTime() - this.lastJump;
         timepassed = timepassed/1000;
         return timepassed < 0.8;
@@ -119,21 +137,34 @@ class MovableObject extends DrawableObject{
  
 
     moveRight() {
-        this.x += this.speed;
-        this.otherDirection = false;
+        if(this.life > 0){
+
+            this.x += this.speed;
+            this.otherDirection = false;
+        } else{
+            return false;
+        }
     }
 
     moveLeft(){
-        this.x -= this.speed;
+        if(this.life > 0){
+            this.x -= this.speed;
+
+        } else{
+            return false;
+        }
         
        
     }
 
     playAnimation(imagesSet) {
-        let i = this.currentImage % imagesSet.length;
-        let path = imagesSet[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+      
+            let i = this.currentImage % imagesSet.length;
+            let path = imagesSet[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+
+        
     }
 
     
@@ -154,4 +185,6 @@ class MovableObject extends DrawableObject{
 
         
     }
+
+   
 }

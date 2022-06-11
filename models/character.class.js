@@ -87,6 +87,7 @@ class Character extends MovableObject{
         this.applyGravitation();
         this.animate();
         this.collectObj();
+        this.gameOver();
         
         
         
@@ -139,20 +140,25 @@ class Character extends MovableObject{
 
         
     }
-
+   
     jump(){
+       let jump; 
+            jump = setInterval(()=>{
+
+                if(this.world.keyboard.UP && !this.isAboveGround() && this.life > 0){
+                        this.waiting();
+                        console.log('jump')
+                        let audioJump = new Audio('audio/jump.wav').play(); 
+                        this.speedY = 30;
+                   
+                }
+            }, 200);
+
         
-        setInterval(() => {
-            if(this.world.keyboard.UP && !this.isAboveGround()){
-                this.waiting();
-                console.log('jump')
-                let audioJump = new Audio('audio/jump.wav').play(); 
+        if(this.life <= 0){
+            clearInterval(jump);
+        }
 
-                this.speedY = 30;
-            }
-
-        }, 200);
-     
 
         
         
@@ -169,16 +175,48 @@ class Character extends MovableObject{
             this.characterAnnoyed = true
         }, 500);
         this.sleep = setTimeout(()=> {
+            
             this.characterAnnoyed = false;
             this.characterSpleept = true;
-            let audioSleeping = new Audio(this.audio[5]).play();
+            if(this.life > 0){
+                let audioSleeping = new Audio('audio/yawn.wav').play();
+
+            }
 
         }, 6000)
         
     }
 
+    gameOver(){
+        setInterval(()=>{
+            if(this.life <= 0){
+                setTimeout(()=>{
+                    this.endAnimationGameOver();
+                    this.world.monster.dead = true;
+    
+                }, 4000)
+            }
+
+        }, 1000/60)
+    }
    
-  
+    endAnimationGameOver(){
+        let imageCache1 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png'];
+        let imageCache2 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png'];
+        let imageCache3 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png'];
+        let imageCache4 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png'];
+        let imageCache5 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png'];
+        let imageCache6 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'];
+        let imageCache7 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'];
+        imageCache1.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache2.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache3.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache4.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache5.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache6.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        imageCache7.src = 'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+
+    }
 
     
 }

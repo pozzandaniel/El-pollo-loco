@@ -12,6 +12,7 @@ class World {
     amountBottles = 0;
     monster = this.level.monster[0] = new Endboss();
     fullscreenIcon = new FullscreenIcon();
+   
 
    
     
@@ -63,10 +64,13 @@ class World {
     }
     
     callBack(){
-        let self = this;
-        requestAnimationFrame(function(){
-            self.draw();
-        })
+        
+            let self = this;
+            requestAnimationFrame(function(){
+                self.draw();
+            })
+            
+       
     }
     
     addStatusBar(){
@@ -145,6 +149,7 @@ class World {
         this.checkCollisionsCharacterVSObjects();
         this.checkCollisionsObjectVSEnemy();
         this.checkCollisionsCharacterVSEndboss();
+        
        
         
              
@@ -218,7 +223,7 @@ class World {
     
     
     checkThrows(){
-        if(this.keyboard.SPACE && this.amountBottles > 0){
+        if(this.keyboard.SPACE && this.amountBottles > 0 && this.character.life > 0){
             let bottle = new ThrowableObject(this.character.x, this.character.y +20);
             this.throwableObjects.push(bottle);
             this.amountBottles -= 5;
@@ -226,7 +231,10 @@ class World {
            
 
             
+        } else {
+            return false;
         }
+       
     }
     
     checkStrikeAgainstChicken(){
@@ -388,7 +396,7 @@ class World {
     }
   
     
-
+    
     
 
     // playMusic(){

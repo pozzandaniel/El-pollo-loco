@@ -29,14 +29,28 @@
     <script src="./models/fullscreen-icon.class.js"></script>
     <script src="./js/game.js"></script>
 </head>
-<body onload="init()">
-    <h1>El pollo loco</h1>
-    <div class="canvas-container">
-        <canvas id="canvas" width="720" height="480"></canvas>
+<body>
+    <div class="start-site">
+    <div class="buttons-container">
+        <button onclick="startGame()">Start Game</button>
     </div>
-    <!-- <div class="fullscreen-icon">
-        <img src="./img/expand-solid.svg" alt="">
-    </div> -->
+    </div>
+    <div class="game d-none">
+        <h1>El pollo loco</h1>
+        <div class="canvas-container">
+            <canvas id="canvas" width="720" height="480"></canvas>
+        </div>
+        <div class="key-description">
+            <div class="key-value"><img  src="./img/square-caret-left-solid.svg" alt="">LEFT</div>
+            <div class="key-value"><img  src="./img/square-caret-up-solid.svg" alt=""> JUMP</div>
+            <div class="key-value"><img  src="./img/square-caret-right-solid.svg" alt=""> RIGHT</div>
+            <div id="key-value"><img id="space-bar"  src="./img/native-button.png" alt=""> THROW BOTTLES</div>
+        </div>
+        <br>
+        <br>
+        <p><a href="https://www.flaticon.com/free-icons/keyboard" title="keyboard icons">Keyboard icons created by Vaadin - Flaticon</a>
+        </p>
+    </div>
     
 </body>
 </html>
