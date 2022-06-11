@@ -181,11 +181,11 @@ class World {
     squashChicken(enemy){
         if(enemy instanceof Chicken){
             this.chickenEndAnimation(enemy);
-            let audioChicken = new Audio(this.audio[0]).play();
+            let audioChicken = new Audio('./audio/chicken.mp3').play();
 
         } else {
             this.chickEndAnimation(enemy);
-            let audioChick = new Audio(this.audio[0]).play();
+            let audioChick = new Audio('./audio/chicken.mp3').play();
         }
         setTimeout(()=> {
             this.spliceChickenFromArray(enemy);
@@ -206,7 +206,7 @@ class World {
     checkCollisionsObjectVSEnemy(){
         setInterval(()=>{
             this.checkThrows();
-        }, 200);
+        }, 400);
         setInterval(()=> {
             this.checkStrikeAgainstChicken();
             this.checkStrikeAgainstEndboss();
@@ -261,11 +261,11 @@ class World {
     killChicken(index, enemy){
         if(enemy instanceof Chicken){
             this.chickenEndAnimation(enemy)
-            let audioChicken = new Audio(this.audio[0]).play();
+            let audioChicken = new Audio('./audio/chicken.mp3').play();
 
         } else {
             this.chickEndAnimation(enemy);
-            let audioChick = new Audio(this.audio[0]).play();
+            let audioChick = new Audio('./audio/chicken.mp3').play();
         }
         setTimeout(()=>{
             this.spliceChickenFromArray(enemy);
@@ -338,7 +338,7 @@ class World {
                 let index = array.indexOf(coin);
                 array.splice(index, 1);
                 this.character.collectObj('coin');
-                let collectAudio = new Audio(this.audio[9]).play();       
+                let collectAudio = new Audio('./audio/collectcoin.wav').play();       
             }
         })
     }

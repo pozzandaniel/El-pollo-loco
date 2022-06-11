@@ -32,14 +32,7 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G18.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G19.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G20.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G13.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G14.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G15.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G16.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G17.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G18.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G19.png',
-        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G20.png'
+  
     ];
     IMAGES_HURT = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G21.png',
@@ -68,25 +61,25 @@ class Endboss extends MovableObject {
     animate(){
         let i = 0;
         setInterval(() => {
-            if(this.world.character.x <= this.x -400 && this.dead == false){
+            if(this.world.character.x <= this.x -600 && this.dead == false){
                 this.stop();    
                 this.attackModus = false;
              this.playAnimation(this.IMAGES_PACEFUL);
-            } else if(this.world.character.x <= this.x -300 && this.attackModus == false && this.dead == false){
+            } else if(this.world.character.x <= this.x -500 && this.attackModus == false && this.dead == false){
                 this.stop();
                 this.playAnimation(this.IMAGES_ALERT);
-            } else if(this.world.character.x <= this.x -200 && this.attackModus == false){
+            } else if(this.world.character.x <= this.x -400 && this.attackModus == false){
                 this.stop();
                 this.attackModus = true;
             } else if(this.attackModus == true && this.dead == false){
                 this.playAnimation(this.IMAGES_ATTACK);
                 i++; 
-                if(i % this.IMAGES_ATTACK.length == 12){
+                if(i % this.IMAGES_ATTACK.length == 6){
                   this.attack();
-                  let audioBigChicken = new Audio(this.audio[1]).play();
+                  let audioBigChicken = new Audio('./audio/chick.wav').play();
                   
                    
-                }else if(i % this.IMAGES_ATTACK.length == 14){
+                }else if(i % this.IMAGES_ATTACK.length == 7){
                   this.back();
                 } else if (i % this.IMAGES_ATTACK.length  == 0){
 
@@ -97,15 +90,18 @@ class Endboss extends MovableObject {
             if(this.isHit() && this.dead == false){
                 this.playAnimation(this.IMAGES_HURT);
                 
-                let audioHitted = new Audio(this.audio[8]).play()
 
                 
                 console.log(this.life);
 
             } 
             
-            if (this.life <= 0){
+            if (this.life <= 0 ){
                 this.playAnimation(this.IMAGES_DEAD);
+                if(this.dead == false){
+                    let audioDead = new Audio('./audio/chicken.mp3').play();
+                    
+                }
                 this.dead = true;
             }
         }, 300);
@@ -117,7 +113,7 @@ class Endboss extends MovableObject {
     attack(){
         
         this.endbossAttack = setInterval(()=> {
-            this.x -=90;
+            this.x -=200;
         }, 100);
         
         
@@ -128,7 +124,7 @@ class Endboss extends MovableObject {
     back(){
         clearInterval(this.endbossAttack);
         this.endbossBack = setInterval(()=> {
-            this.x +=90;
+            this.x +=200;
         }, 100);
     }
     stop(){
