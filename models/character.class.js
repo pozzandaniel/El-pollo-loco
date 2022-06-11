@@ -193,6 +193,7 @@ class Character extends MovableObject{
                 setTimeout(()=>{
                     this.endAnimationGameOver();
                     this.world.monster.dead = true;
+                    document.getElementsByClassName('game-over')[0].classList.remove('d-none');
     
                 }, 4000)
             }

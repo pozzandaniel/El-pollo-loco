@@ -86,5 +86,22 @@ canvas {
 }
 
 .d-none {
-    display: none;
+    display: none ;
+}
+
+.game-over{
+    position: absolute;
+    
+    
+}
+
+.game-over img{
+    height: 350px;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+.link-button{
+    text-decoration: none;
+    color: #bf0000;
 }
