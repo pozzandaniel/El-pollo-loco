@@ -1,5 +1,4 @@
 let canvas;
-let world;
 let keyboard = new Keyboard();
 let soundtrack_audio;
 
@@ -79,3 +78,18 @@ document.addEventListener('mousedown', (e) => {
     }
 })
 
+
+
+
+
+// window.addEventListener('resize', (e)=>{
+//     if(window.innerWidth < 900){
+//         e.stopPropagation();
+//         document.getElementById('canvas').style = 'visibility: visible';
+//     }
+// })
+
+// function excludeParent(e){
+//     e.stopProagation();
+//     document.getElementById('canvas').classList.remove('d-none');
+// }

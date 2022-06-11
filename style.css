@@ -7,6 +7,7 @@ body {
     font-family: 'Orbitron';
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 
@@ -104,4 +105,40 @@ canvas {
 .link-button{
     text-decoration: none;
     color: #bf0000;
+}
+
+@media only screen and (max-width: 900px){
+    .key-description {
+        display: none;
+    }
+
+    p {
+        display: none;
+    }
+
+    .canvas-container {
+        visibility: hidden;
+    }
+
+    #canvas{
+        visibility: visible;
+    }
+}
+
+/* Smartphone 720 px */
+@media only screen and (max-width: 720px) {
+    #canvas{
+        width: 100%;
+    }
+
+    h1{
+        display: none;
+    }
+}
+
+/* Smartphone 480px */
+@media only screen and (max-height: 480px){
+    #canvas {
+        height: 100vh;
+    }
 }

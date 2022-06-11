@@ -1,14 +1,21 @@
-class FullscreenIcon extends DrawableObject{
+class Icon extends DrawableObject{
     x = 680;
     y = 440;
     width = 20;
     height = 20;
+    iconPath;
 
     
     
 
-    constructor(){
-        super().loadImg('img/expand-solid.svg');
+    constructor(iconPath, x, y, width, height ){
+        super();
+        this.iconPath = iconPath;
+        this.loadImg(this.iconPath);
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
 
      // called when user clicks the mouse

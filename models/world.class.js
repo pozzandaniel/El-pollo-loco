@@ -11,7 +11,11 @@ class World {
     amountCoins = 0;
     amountBottles = 0;
     monster = this.level.monster[0] = new Endboss();
-    fullscreenIcon = new FullscreenIcon();
+    fullscreenIcon = new Icon('./img/expand-solid.svg', 680, 410, 20, 20);
+    left_icon = new Icon('./img/square-caret-left-solid.svg', 30, 410, 30, 30);
+    up_icon = new Icon('./img/square-caret-up-solid.svg', 70, 410, 30, 30);
+    right_icon = new Icon('./img/square-caret-right-solid.svg', 110, 410, 30, 30);
+    space_icon = new Icon ('./img/native-button.png', 170, 410, 60, 30);
    
 
    
@@ -54,6 +58,15 @@ class World {
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
         this.addStatusBar();
         this.addToMap(this.fullscreenIcon);
+        this.addToMap(this.left_icon);
+        this.ctx.font = '16px Orbitron';
+        this.ctx.fillText('Left', 25, 460);
+        this.ctx.fillText('Up', 70, 460);
+        this.ctx.fillText('Right', 105, 460);
+        this.ctx.fillText('Attack', 170, 460);
+        this.addToMap(this.up_icon);
+        this.addToMap(this.right_icon);
+        this.addToMap(this.space_icon);
         this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
@@ -105,14 +118,17 @@ class World {
      * @param {object} mo 
      */
     addToMap(mo){
-        this.flipImage(mo);
-        
-        mo.draw(this.ctx);
-        
-        // mo.setFrame(this.ctx);
-        
+      
 
-        this.flipImageBack(mo);
+            this.flipImage(mo);
+            
+            mo.draw(this.ctx);
+            
+            // mo.setFrame(this.ctx);
+            
+    
+            this.flipImageBack(mo);
+        
     }
     
     addFixedObject(fo, array, percentage){
@@ -394,6 +410,8 @@ class World {
              
         }, 300);    
     }
+
+  
   
     
     
