@@ -7,11 +7,11 @@ class World {
     // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
     end_game = 719*4;
-    audio = ['./audio/chicken.mp3', './audio/chick.wav', './audio/morenita.mp3', './audio/smashglass.wav', './audio/jump.wav', './audio/yawn.wav', './audio/hit.wav', './audio/dead.mp3', './audio/chicken_pain.wav', './audio/collectcoin.wav'];    
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;
     monster = this.level.monster[0] = new Endboss();
+    fullscreenIcon = new FullscreenIcon();
 
    
     
@@ -52,6 +52,7 @@ class World {
         this.addToMap(this.monster);
         this.ctx.translate(-this.camera_x, 0); // with the movement of the character the camera becomes the same "amount" of movement but in the opposite direction
         this.addStatusBar();
+        this.addToMap(this.fullscreenIcon);
         this.ctx.translate(this.camera_x, 0); // it blocks the camera and avoid an infinity movement to link (it happens because draw repeat it self)
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
@@ -104,7 +105,7 @@ class World {
         
         mo.draw(this.ctx);
         
-        mo.setFrame(this.ctx);
+        // mo.setFrame(this.ctx);
         
 
         this.flipImageBack(mo);

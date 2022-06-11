@@ -59,3 +59,11 @@ document.addEventListener('keyup', (e) => {
      
 });
 
+document.addEventListener('mousedown', (e) => {
+    let positionX = e.offsetX;
+    let positionY = e.offsetY;
+    if(positionX >= 680 && positionX <= 700 && positionY >= 440 && positionY <= 460){
+        canvas.requestFullscreen();
+    }
+})
+

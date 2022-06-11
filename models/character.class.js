@@ -146,7 +146,7 @@ class Character extends MovableObject{
             if(this.world.keyboard.UP && !this.isAboveGround()){
                 this.waiting();
                 console.log('jump')
-                let audioJump = new Audio(this.audio[4]).play(); 
+                let audioJump = new Audio('audio/jump.wav').play(); 
 
                 this.speedY = 30;
             }

@@ -5,6 +5,32 @@ body {
     font-family: 'Orbitron';
 }
 
+.canvas-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/photo-frame2.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 625px;
+    width: 850px;
+}
+
 canvas {
     background-color: black;
+}
+
+.fullscreen-icon{
+    position: fixed;
+    right: 420px;
+    bottom: 120px;
+}
+
+.fullscreen-icon img{
+    height: 20px;
+    width: 20px;
+}
+
+.d-none {
+    display: none;
 }

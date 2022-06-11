@@ -6,7 +6,6 @@ class DrawableObject {
     width = 100;
     imageCache = {};
     currentImage = 0;
-    audio = ['./audio/chicken.mp3', './audio/chick.wav', './audio/morenita.mp3', './audio/smashglass.wav', './audio/jump.wav', './audio/yawn.wav', './audio/hit.wav', './audio/dead.mp3', './audio/chicken_pain.wav', './audio/collectcoin.wav'];    
 
 
     loadImg(path){
