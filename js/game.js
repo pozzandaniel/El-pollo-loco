@@ -70,36 +70,57 @@ document.addEventListener('keyup', (e) => {
      
 });
 
-document.addEventListener('mousedown', (e) => {
+
+
+document.addEventListener('touchstart', (e) => {
     let positionX = e.offsetX;
     let positionY = e.offsetY;
-    if(positionX >= 680 && positionX <= 700 && positionY >= 440 && positionY <= 460){
+   
+    
+    if(positionX >= 680 && positionX <= 700 && positionY >= 410 && positionY <= 430){
         canvas.requestFullscreen();
+       
     }
 
     if(positionX >=30 && positionX <=60 && positionY >= 410 && positionY <= 440){
         keyboard.LEFT = true;
-        setTimeout(()=>{
-            keyboard.LEFT = false;
-        }, 400)
+      
     }
     if(positionX >=70 && positionX <=100 && positionY >= 410 && positionY <= 440){
         keyboard.UP = true;
-        setTimeout(()=>{
-            keyboard.UP = false;
-        }, 400)
+      
     }
     if(positionX >=110 && positionX <=140 && positionY >= 410 && positionY <= 440){
         keyboard.RIGHT = true;
-        setTimeout(()=>{
-            keyboard.RIGHT = false;
-        }, 400)
+     
     }
     if(positionX >=170 && positionX <=230 && positionY >= 410 && positionY <= 440){
         keyboard.SPACE = true;
-        setTimeout(()=>{
-            keyboard.SPACE = false;
-        }, 400)
+       
+    }
+    
+})
+document.addEventListener('touchend', (e) => {
+    let positionX = e.offsetX;
+    let positionY = e.offsetY;
+   
+    
+
+    if(positionX >=30 && positionX <=60 && positionY >= 410 && positionY <= 440){
+        keyboard.LEFT = false;
+        
+    }
+    if(positionX >=70 && positionX <=100 && positionY >= 410 && positionY <= 440){
+        keyboard.UP = false;
+       
+    }
+    if(positionX >=110 && positionX <=140 && positionY >= 410 && positionY <= 440){
+        keyboard.RIGHT = false;
+      
+    }
+    if(positionX >=170 && positionX <=230 && positionY >= 410 && positionY <= 440){
+        keyboard.SPACE = false;
+      
     }
     
 })

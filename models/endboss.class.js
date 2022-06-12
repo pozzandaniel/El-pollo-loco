@@ -137,6 +137,8 @@ class Endboss extends MovableObject {
             if(this.life <= 0){
                 setTimeout(()=>{
                     this.endAnimationGameOver()
+                    document.getElementsByClassName('game-over')[0].classList.remove('d-none');
+
 
                 }, 4000)
             }

@@ -72,7 +72,7 @@ canvas {
 .buttons-container{
     position: absolute;
     bottom: 20px;
-    right: 45%;
+    right: 43%;
     width: 15%;
 }
 
@@ -117,16 +117,33 @@ canvas {
     }
 
     .canvas-container {
-        visibility: hidden;
+        /* visibility: hidden; */
+        height: 100vh;
+        width: 100%;
+        background-image: none;
+
     }
 
     #canvas{
-        visibility: visible;
+        /* visibility: visible; */
+    }
+
+    .start-site {
+        background-size: contain;
+    }
+
+   
+
+    .buttons-container{
+        bottom: none;
+        top: 10%;
+        right: 42%;
     }
 }
 
 /* Smartphone 720 px */
 @media only screen and (max-width: 720px) {
+
     #canvas{
         width: 100%;
     }
@@ -134,11 +151,32 @@ canvas {
     h1{
         display: none;
     }
+
+    body {
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    .buttons-container{
+        bottom: none;
+        top: 10%;
+        right: 44%;
+    }
 }
 
 /* Smartphone 480px */
 @media only screen and (max-height: 480px){
     #canvas {
         height: 100vh;
+    }
+
+    
+}
+
+@media only screen and (max-width: 480px){
+    .buttons-container {
+        right: 48%;
     }
 }
