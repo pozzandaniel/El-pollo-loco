@@ -3,22 +3,22 @@ class StatusBar extends DrawableObject {
     y = 10;
     height= 60;
     width = 200;
-    
-    
-   constructor() {
-       super();
-   }
-  
-
-
     percentage = 100;
-
+    
+    /**
+     * This function turns an amount regularly updated into an index related to an image of a given array.
+     * @param {number} percentage - Amount of an element that could be accumulated or lost by the character. For Example life or coins.
+     * @param {array} array - An array composed of image paths.
+     */
     setPercentage(percentage, array){
         this.percentage = percentage;
         let path = array[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
-
+    /**
+     * For each amount a number representing an index is returned.
+     * @returns {number} - An index.
+     */
     resolveImageIndex(){
         if(this.percentage >= 100){
             return 5;
