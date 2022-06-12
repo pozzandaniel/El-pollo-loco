@@ -235,8 +235,9 @@ function eventReleaseTouchScreen(){
 }
 
 /**
- * At the bottom of "index.html" there is a descriptive panel with the taste of the keyboard.
- * But they aren't buttons unlike the sound button and the fullscreen button.
+ * At the bottom of "index.html" there is a descriptive panel with the keys of the keyboard.
+ * But they aren't effectively buttons unlike the sound button and the fullscreen button.
+ * They only have the same appearance.
  * When they are tried to be clicked, that initialise an alert message.
  */
 function alertKeyboard(){
