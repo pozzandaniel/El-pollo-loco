@@ -1,8 +1,8 @@
 class Chick extends MovableObject {
     id;
-    y = 350;
-    height = 80;
-    width = 66;
+    y = 370;
+    height = 60;
+    width = 56;
     chicken_audio = new Audio('./audio/chicken.mp3')
     IMAGES_WALKING = [
         'img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',

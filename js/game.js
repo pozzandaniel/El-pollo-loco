@@ -2,16 +2,20 @@ let canvas;
 let keyboard = new Keyboard();
 let soundtrack_audio;
 
+
 function init(){
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+   
 }
 
 function startGame(){
-    soundtrack_audio = new Audio('./audio/morenita.mp3').play();
+    soundtrack_audio = new Audio('./audio/morenita.mp3');
+    soundtrack_audio.play();
     document.getElementsByClassName('game')[0].classList.remove('d-none');
     document.getElementsByClassName('start-site')[0].classList.add('d-none');
     init();
+    touchScreenComandBar();
     
     
 }
@@ -71,59 +75,68 @@ document.addEventListener('keyup', (e) => {
 });
 
 
-
-document.addEventListener('touchstart', (e) => {
-    let positionX = e.offsetX;
-    let positionY = e.offsetY;
-   
+function touchScreenComandBar(){
+    let audioMute = document.getElementById('audioMute');
+    let audioPlay = document.getElementById('audioPlay');
+    let resizeButton = document.getElementById('resizeButton');
+    let leftButton = document.getElementById('leftButton');
+    let rightButton = document.getElementById('rightButton');
+    let jumpButton = document.getElementById('jumpButton');
+    let attackButton = document.getElementById('attackButton');
     
-    if(positionX >= 680 && positionX <= 700 && positionY >= 410 && positionY <= 430){
+    resizeButton.addEventListener('mousedown', (e)=>{
+        e.preventDefault();
         canvas.requestFullscreen();
-       
-    }
+    })
 
-    if(positionX >=30 && positionX <=60 && positionY >= 410 && positionY <= 440){
+    audioMute.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        soundtrack_audio.pause();
+        audioMute.classList.add('d-none');
+        audioPlay.classList.remove('d-none');
+    })
+
+    audioPlay.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        soundtrack_audio.play();
+        audioMute.classList.remove('d-none');
+        audioPlay.classList.add('d-none');
+    })
+
+    leftButton.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
         keyboard.LEFT = true;
-      
-    }
-    if(positionX >=70 && positionX <=100 && positionY >= 410 && positionY <= 440){
-        keyboard.UP = true;
-      
-    }
-    if(positionX >=110 && positionX <=140 && positionY >= 410 && positionY <= 440){
-        keyboard.RIGHT = true;
-     
-    }
-    if(positionX >=170 && positionX <=230 && positionY >= 410 && positionY <= 440){
-        keyboard.SPACE = true;
-       
-    }
-    
-})
-document.addEventListener('touchend', (e) => {
-    let positionX = e.offsetX;
-    let positionY = e.offsetY;
-   
-    
-
-    if(positionX >=30 && positionX <=60 && positionY >= 410 && positionY <= 440){
+    })
+    leftButton.addEventListener('touchend', (e)=>{
+        e.preventDefault();
         keyboard.LEFT = false;
-        
-    }
-    if(positionX >=70 && positionX <=100 && positionY >= 410 && positionY <= 440){
-        keyboard.UP = false;
-       
-    }
-    if(positionX >=110 && positionX <=140 && positionY >= 410 && positionY <= 440){
+    })
+    rightButton.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    })
+    rightButton.addEventListener('touchend', (e)=>{
+        e.preventDefault();
         keyboard.RIGHT = false;
-      
-    }
-    if(positionX >=170 && positionX <=230 && positionY >= 410 && positionY <= 440){
+    })
+    jumpButton.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        keyboard.UP = true;
+    })
+    jumpButton.addEventListener('touchend', (e)=>{
+        e.preventDefault();
+        keyboard.UP = false;
+    })
+    attackButton.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        keyboard.SPACE = true;
+    })
+    attackButton.addEventListener('touchend', (e)=>{
+        e.preventDefault();
         keyboard.SPACE = false;
-      
-    }
-    
-})
+    })
+}
+
 
 
 // document.addEventListener('mouseup', (e)=> {

@@ -24,6 +24,17 @@ class DrawableObject {
             });
 
     }
+
+    playAnimation(imagesSet) {
+      
+        let i = this.currentImage % imagesSet.length;
+        let path = imagesSet[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+
+    
+}
+
     draw(ctx){
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }

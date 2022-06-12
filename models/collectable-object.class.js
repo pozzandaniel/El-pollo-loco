@@ -7,12 +7,25 @@ class CollectableObject extends MovableObject {
     bottle2 = 'img/6.botella/2.Botella_enterrada2.png';
     coin1 = 'img/8.Coin/Moneda1.png';
     coin2 = 'img/8.Coin/Moneda2.png';
+
+    BOTTLE_IMAGES = [
+        './img/6.botella/2.Botella_enterrada1.png',
+        './img/6.botella/2.Botella_enterrada2.png'
+    ];
+
+    COIN_IMAGES = [
+        './img/8.Coin/Moneda1.png',
+        './img/8.Coin/Moneda2.png',
+    ];
    
 
     constructor(path){
         super().loadImg(path);
+        this.loadImages(this.BOTTLE_IMAGES);
+        this.loadImages(this.COIN_IMAGES);
         this.givePlace(path);
         this.setSize(path)
+        this.animate(path);
     }
     
     givePlace(path){
@@ -36,5 +49,19 @@ class CollectableObject extends MovableObject {
             this.width = 70;
         }
 
+    }
+
+    animate(path){
+        if(path == this.bottle1 || path == this.bottle2){
+            setInterval(()=>{
+                this.playAnimation(this.BOTTLE_IMAGES);
+
+            }, 500);
+        } else {
+            setInterval(()=>{
+                this.playAnimation(this.COIN_IMAGES);
+
+            }, 500);
+        }
     }
 }
