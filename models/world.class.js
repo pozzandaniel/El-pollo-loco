@@ -6,7 +6,7 @@ class World {
     bottleBar = new BottleBar();
     // lifeBarEndboss = new LifeBarEndboss();
     cord_x;
-    end_game = 719*12;
+    end_game = 719*8;
     throwableObjects = [];
     amountCoins = 0;
     amountBottles = 0;

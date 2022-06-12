@@ -29,7 +29,7 @@ class CollectableObject extends MovableObject {
     }
     
     givePlace(path){
-        this.x = 100+ Math.random()* 2500;
+        this.x = 100+ Math.random()* 719*6;
         if(path == this.bottle1 || path == this.bottle2){
             this.y = this.aboveGround;
         } else {

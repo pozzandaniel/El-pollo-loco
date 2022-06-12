@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="custom.css">
-    <title>El pollo loco</title>
+    <title>El Pollo Loco</title>
     <script src="./models/keyboard.class.js"></script>
     <script src="./models/level.class.js"></script>
     <script src="./models/drawable-object.class.js"></script>
     <script src="./models/status-bar.class.js"></script>
     <script src="./models/bottle-bar.class.js"></script>
     <script src="./models/life-bar.class.js"></script>
-    <!-- <script src="./models/life-bar-endboss.class.js"></script> -->
     <script src="./models/coins-bar.class.js"></script>
     <script src="./models/movable-object.class.js"></script>
     <script src="./models/background-object.class.js"></script>
@@ -57,16 +56,20 @@
             </div>
         </div>
         <div class="key-description">
-            <div class="key-value"><img  src="./img/square-caret-left-solid.svg" alt="">LEFT</div>
-            <div class="key-value"><img  src="./img/square-caret-up-solid.svg" alt=""> JUMP</div>
-            <div class="key-value"><img  src="./img/square-caret-right-solid.svg" alt=""> RIGHT</div>
-            <div id="space-value"><img id="space-bar"  src="./img/native-button.png" alt=""> THROW BOTTLES</div>
+            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-left-solid.svg" alt="">LEFT</div>
+            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-up-solid.svg" alt=""> JUMP</div>
+            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-right-solid.svg" alt=""> RIGHT</div>
+            <div onclick="alertKeyboard()" id="space-value"><img id="space-bar"  src="./img/native-button.png" alt=""> THROW BOTTLES</div>
             <div class="key-value"><img id="resizeButton" src="./img/maximize-solid.svg" alt=""> RESIZE</div>
+            <div id="mute_grn" class="key-value"><img  class="audioButton" src="./img/volume-xmark-solid.svg" alt="">MUTE</div>
+            <div id="play_grn" class="key-value  d-none"><img style="margin-bottom: 17px;"  class="audioButton" src="./img/volume-high-solid.svg" alt="">MUSIC</div>
         </div>
         <br>
         <br>
-        <p>Space icon created by<a href="https://www.flaticon.com/free-icons/keyboard" title="keyboard icons"> Vaadin - Flaticon</a></p>
-        <p>Other icons are provided by <a href="https://fontawesome.com/"> fontawesome</a></p>
+        <div class="impressum">
+            <p>Space icon created by<a href="https://www.flaticon.com/free-icons/keyboard" title="keyboard icons"> Vaadin - Flaticon</a></p>
+            <p>Other icons are provided by <a href="https://fontawesome.com/"> fontawesome</a></p>
+        </div>
     </div>
     <div class="game-over d-none">
         <img src="./img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png" alt="">

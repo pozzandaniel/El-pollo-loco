@@ -76,6 +76,8 @@ document.addEventListener('keyup', (e) => {
 
 
 function touchScreenComandBar(){
+    let mute_grn = document.getElementById('mute_grn');
+    let play_grn = document.getElementById('play_grn');
     let audioMute = document.getElementById('audioMute');
     let audioPlay = document.getElementById('audioPlay');
     let resizeButton = document.getElementById('resizeButton');
@@ -83,7 +85,21 @@ function touchScreenComandBar(){
     let rightButton = document.getElementById('rightButton');
     let jumpButton = document.getElementById('jumpButton');
     let attackButton = document.getElementById('attackButton');
+
+    mute_grn.addEventListener('mousedown', (e)=>{
+        e.preventDefault();
+        soundtrack_audio.pause();
+        mute_grn.classList.add('d-none');
+        play_grn.classList.remove('d-none');
+    })
     
+    play_grn.addEventListener('mousedown', (e) =>{
+        e.preventDefault();
+        soundtrack_audio.play();
+        mute_grn.classList.remove('d-none');
+        play_grn.classList.add('d-none');
+    })
+
     resizeButton.addEventListener('mousedown', (e)=>{
         e.preventDefault();
         canvas.requestFullscreen();
@@ -135,6 +151,10 @@ function touchScreenComandBar(){
         e.preventDefault();
         keyboard.SPACE = false;
     })
+}
+
+function alertKeyboard(){
+    alert('For this action use the keyboard of your pc');
 }
 
 
