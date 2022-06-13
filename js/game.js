@@ -45,22 +45,27 @@ document.addEventListener('keydown', (e) => {
     
         if(e.keyCode == 32){
             keyboard.SPACE = true;
+            e.preventDefault();
         }
     
         if(e.keyCode == 40){
             keyboard.DOWN = true;
+            e.preventDefault();
         }
     
         if(e.keyCode == 39){
             keyboard.RIGHT = true;
+            e.preventDefault();
         }
     
         if(e.keyCode == 37){
             keyboard.LEFT = true;
+            e.preventDefault();
         }
     
         if(e.keyCode == 38){
             keyboard.UP = true;
+            e.preventDefault();
         } 
 });
 

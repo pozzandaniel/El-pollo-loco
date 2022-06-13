@@ -32,6 +32,30 @@ body {
     width: 850px;
 }
 
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(219, 182, 16, 0.9);
+    border-radius: 12px;
+    margin: 12px;
+    box-sizing: border-box;
+}
+
+.title-box img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+}
+
+h1{
+    border-bottom: 3px solid rgba(219, 182, 16, 0.9);
+    border-top: 3px solid rgba(219, 182, 16, 0.9);
+    padding: 12px;
+    width: 500px;
+}
+
+
 canvas {
     background-color: black;
 }
@@ -162,7 +186,7 @@ canvas {
         display: none;
     }
 
-    h1{
+    .title-box{
         display: none;
     }
 
