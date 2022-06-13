@@ -4,7 +4,6 @@ class Character extends MovableObject{
     width = 150;
     y = 210;
     speed = 2;
-
     otherDirection = false;
     start;
     sleep;
@@ -76,117 +75,144 @@ class Character extends MovableObject{
     
     constructor(){
         super().loadImg('../img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
+        this.setImageCaches();
+        this.jump();
+        this.waiting();
+        this.applyGravitation();
+        this.animate();
+        this.collectObj();
+        this.gameOver(); 
+    }
+
+    /**
+     * The function creates 6 different image cache for each animation.
+     */
+    setImageCaches(){
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_PACEFUL);
         this.loadImages(this.IMAGES_SLEEPING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
-        this.jump();
-        this.waiting();
-        this.applyGravitation();
-        this.animate();
-        this.collectObj();
-        this.gameOver();
-        
-        
-        
     }
 
+    /**
+     * The function starts to check the status of the character and assigned a related animation.
+     */
     animate(){
-        
-            setInterval(() => {     //the character changes his position
-                // this.walking.pause();    
-                if(this.world.keyboard.RIGHT && this.x < this.world.end_game){
-                    this.moveRight();
-                        
-                    // this.walking.play();
-                }
 
-                if(this.world.keyboard.LEFT && this.x > 0){
-                    this.moveLeft();
-                    this.otherDirection = true;
-                    // this.walking.play();
-                }
-
-                
-                this.world.camera_x = -this.x +100; // when the character moves the camera gain the same amount but in the other direction. 100 only define the start position of the camera
-                
-            });
-            
-            setInterval(() => {     // the character starts an animation without changing the position
-                if(this.isDead()){
-                    this.playAnimation(this.IMAGES_DEAD);
-                } else if(this.isHit()){
-                    this.waiting();
-                    this.playAnimation(this.IMAGES_HURT);
-                } else if(this.isAboveGround()){
-                    this.playAnimation(this.IMAGES_JUMPING); 
-                
-                } else  if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-                    this.waiting(); 
-                    this.playAnimation(this.IMAGES_WALKING);
-                } else if(this.characterAnnoyed){
-                    this.playAnimation(this.IMAGES_PACEFUL);
-               
-                } else if(this.characterSpleept){
-                    this.playAnimation(this.IMAGES_SLEEPING);
-
-                    
-                }
-                   
-                
-            }, 110);
-
-        
+        this.commandMovement();
+       
+        setInterval(() => {     
+            this.animationSets();        
+        }, 110);
     }
-   
+
+    /**
+     * When the buttons on the keyboard are pressed and the character is located inside the entirely width of the canvas,
+     * the character moves.
+     * The variable "camera_x" inside the object "world" describes the position of the camera. When the character moves along 
+     * the x coordinate, the camera moves in the opposite direction for the same value.
+     */
+    commandMovement(){
+        let startPositionCamera = 100;
+        setInterval(() => {     
+            if(this.world.keyboard.RIGHT && this.x < this.world.end_game){
+                this.moveRight();
+            }
+
+            if(this.world.keyboard.LEFT && this.x > 0){
+                this.moveLeft();
+                this.otherDirection = true;
+            }
+
+            this.world.camera_x = -this.x + startPositionCamera;  
+        });
+    }
+
+    /**
+     * Depending of the condition a different animation is applied.
+     * The character posseses 6 different imageCaches for 6 different animations
+     */
+    animationSets(){
+        if(this.isDead()){
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if(this.isHit()){
+            this.waiting();
+            this.playAnimation(this.IMAGES_HURT);
+        } else if(this.isAboveGround()){
+            this.playAnimation(this.IMAGES_JUMPING); 
+        } else  if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+            this.waiting(); 
+            this.playAnimation(this.IMAGES_WALKING);
+        } else if(this.characterAnnoyed){
+            this.playAnimation(this.IMAGES_PACEFUL);
+        } else if(this.characterSpleept){
+            this.playAnimation(this.IMAGES_SLEEPING); 
+        }
+    }
+    /**
+     * This function allows the character to move along the y coordinates of the canvas, when the jump button is pressed.
+     * The setInterval avoids that multiple jumps are performed. So the character can only do one jump at a time. So he cannot fly.
+     * the "waiting" function applies the animation of the annoyed character with a delay of 500 milliseconds.
+     * that's avoid that at the end of the jump animation, the character remain in an image of the jump sequence.
+     */
     jump(){
-       let jump; 
-            jump = setInterval(()=>{
-
-                if(this.world.keyboard.UP && !this.isAboveGround() && this.life > 0){
-                        this.waiting();
-                        console.log('jump')
-                        let audioJump = new Audio('audio/jump.wav').play(); 
-                        this.speedY = 30;
-                   
-                }
-            }, 200);
-
-        
+        let jump; 
+        jump = setInterval(()=>{
+            if(this.world.keyboard.UP && !this.isAboveGround() && this.life > 0){
+                this.waiting();
+                let audioJump = new Audio('audio/jump.wav').play(); 
+                this.speedY = 30;  
+            }
+        }, 200);
         if(this.life <= 0){
             clearInterval(jump);
-        }
-
-
-        
-        
+        }  
     }
 
+    /**
+     * This function is linked with the "animationSets" function.
+     * So when the character is not in another status, or in other words no buttons are pressed on the keyboard and 
+     * the character is not hit by an enemy. Then after 500 milliseconds the character enters the annoyed status and
+     * after 6000 milliseconds in the sleeping status.
+     * The variables "characterAnnoyed" and "characterSpleept" are used in the function "animateSets" to change his animation.
+     */
     waiting(){
-        this.characterAnnoyed = false;
-        this.characterSpleept = false;
-       
+        this.defaultWaitingStatus();
         clearTimeout(this.start)
         clearTimeout(this.sleep)
         this.start = setTimeout(() => {
-        
             this.characterAnnoyed = true
         }, 500);
         this.sleep = setTimeout(()=> {
-            
             this.characterAnnoyed = false;
             this.characterSpleept = true;
-            if(this.life > 0){
-                let audioSleeping = new Audio('audio/yawn.wav').play();
-
-            }
-
-        }, 6000)
-        
+            this.sleepingAudio();
+        }, 6000);  
     }
 
+    /**
+     * It sets the default waiting statuses.
+     */
+    defaultWaitingStatus(){
+        this.characterAnnoyed = false;
+        this.characterSpleept = false;
+    }
+
+    sleepingAudio(){
+        if(this.life > 0){
+            let audioSleeping = new Audio('audio/yawn.wav').play();
+        }
+    }
+
+    /**
+     * This function checks of the character life is minor or equal to 0 or if the monster status is dead.
+     * In these cases the game over screen appears.
+     * The animation of the character dead is provided from the function "animationSets" but with a delay of
+     * 4000 milliseconds all the images of the animationset are substitute with the last image.
+     * So the animation technically go on, but it always show the same image.
+     */
     gameOver(){
         setInterval(()=>{
             if(this.life <= 0){
@@ -194,13 +220,14 @@ class Character extends MovableObject{
                     this.endAnimationGameOver();
                     this.world.monster.dead = true;
                     document.getElementsByClassName('game-over')[0].classList.remove('d-none');
-    
                 }, 4000)
             }
-
         }, 1000/60)
     }
-   
+    
+    /**
+     * That's the function that substitute the images of the animationSet "IMAGES_DEAD" with the last image of this set.
+     */
     endAnimationGameOver(){
         let imageCache1 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png'];
         let imageCache2 = this.imageCache['img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png'];
