@@ -1,11 +1,15 @@
 class Endboss extends MovableObject {
     world;
     life = 100;
+    x = 719*8;
     y =90;
     height = 360;
     width = 366;
     dead = false;
     attackModus = false;
+    endbossAttack;
+    endbossBack;
+    i = 0;
 
     IMAGES_PACEFUL = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/1.Caminata/G1.png',
@@ -43,7 +47,8 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png',
-    ]
+    ];
+
     constructor(){
         super().loadImg(this.IMAGES_ALERT[0]);
         this.loadImages(this.IMAGES_PACEFUL);
@@ -51,102 +56,111 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 719*8;   
         this.animate();
         this.gameOver();
-
-
     }
     
-
+    /**
+     * This function checks the status of the endboss.
+     */
     animate(){
-        let i = 0;
         setInterval(() => {
-            if(this.world.character.x <= this.x -600 && this.dead == false){
-                this.stop();    
-                this.attackModus = false;
-             this.playAnimation(this.IMAGES_PACEFUL);
-            } else if(this.world.character.x <= this.x -500 && this.attackModus == false && this.dead == false){
-                this.stop();
-                this.playAnimation(this.IMAGES_ALERT);
-            } else if(this.world.character.x <= this.x -400 && this.attackModus == false){
-                this.stop();
-                this.attackModus = true;
-            } else if(this.attackModus == true && this.dead == false){
-                this.playAnimation(this.IMAGES_ATTACK);
-                i++; 
-                if(i % this.IMAGES_ATTACK.length == 6){
-                  this.attack();
-                  let audioBigChicken = new Audio('./audio/chick.wav').play();
-                  
-                   
-                }else if(i % this.IMAGES_ATTACK.length == 7){
-                  this.back();
-                } else if (i % this.IMAGES_ATTACK.length  == 0){
-
-                    this.stop();
-                }  
-            } 
-            
+            this.distanceCharacterEnemy();
             if(this.isHit() && this.dead == false){
                 this.playAnimation(this.IMAGES_HURT);
-                
-
-                
-                console.log(this.life);
-
             } 
             
             if (this.life <= 0 ){
                 this.playAnimation(this.IMAGES_DEAD);
                 if(this.dead == false){
-                    let audioDead = new Audio('./audio/chicken.mp3').play();
-                    
+                    new Audio('./audio/chicken.mp3').play();
                 }
                 this.dead = true;
             }
         }, 300);
-    
     }
 
-    endbossAttack;
-    endbossBack;
+    /**
+     * If the distance between the character and the endboss decreases, changes the animation of the endboss.
+     * When the character is distant more than 600px on the x coordinates, the animation of the endboss correspond to a 
+     * peaceful state.
+     * If it is less then 500px the endboss is in the alert state and if it is less then 400px he is ready to attack.
+     */
+    distanceCharacterEnemy(){
+        if(this.world.character.x <= this.x -600 && this.dead == false){
+            this.stop();    
+            this.attackModus = false;
+            this.playAnimation(this.IMAGES_PACEFUL);
+        } else if(this.world.character.x <= this.x -500 && this.attackModus == false && this.dead == false){
+            this.stop();
+            this.playAnimation(this.IMAGES_ALERT);
+        } else if(this.world.character.x <= this.x -400 && this.attackModus == false){
+            this.stop();
+            this.attackModus = true;
+        } else if(this.attackModus == true && this.dead == false){
+            this.i++; 
+            this.attackMovement();
+        } 
+    }
+
+    /**
+     * After the animation attack is loaded. By the module that correspond to the image in this animation array with index 6.
+     * The enemy moves along the x coordinates against the character and eventually strike him by collision.
+     * By the module of the image with index 7 it comes back in his original position.
+     */
+    attackMovement(){
+        this.playAnimation(this.IMAGES_ATTACK);
+        if(this.i % this.IMAGES_ATTACK.length == 6){
+            this.attack();
+            new Audio('./audio/chick.wav').play();    
+        }else if(this.i % this.IMAGES_ATTACK.length == 7){
+            this.back();
+        } else if (this.i % this.IMAGES_ATTACK.length  == 0){
+            this.stop();
+        }  
+    }
+
+    /**
+     * The movement of the endboss during his attack along the x coordinates.
+     */
     attack(){
-        
         this.endbossAttack = setInterval(()=> {
             this.x -=200;
         }, 100);
-        
-        
-        
-       
-        
     }
+    /**
+     * The endboss comes in his original position after that he's attacked.
+     */
     back(){
         clearInterval(this.endbossAttack);
         this.endbossBack = setInterval(()=> {
             this.x +=200;
         }, 100);
     }
+    /**
+     * It avoids that the movement in direction of the character is continuosly performed every 100 milliseconds cancelling
+     * the effect of the "back()" function.
+     */
     stop(){
         clearInterval(this.endbossBack);
     }
 
+    /**
+     * If the life of the endboss reaches 0. The animation set is changed with a single image of the dead/burnt endboss,
+     *  after a delay of 4000 milliseconds. 
+     * Then the game over screen appears.
+     */
     gameOver(){
         setInterval(()=>{
             if(this.life <= 0){
                 setTimeout(()=>{
                     this.endAnimationGameOver()
                     document.getElementsByClassName('game-over')[0].classList.remove('d-none');
-
-
                 }, 4000)
             }
-
         }, 1000/60)
-        
-        
     }
+
     endAnimationGameOver(){
         let imgCache1 = this.imageCache['img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png'];
         let imgCache2 = this.imageCache['img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png'];
