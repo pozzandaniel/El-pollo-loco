@@ -4,6 +4,7 @@ class Chick extends MovableObject {
     height = 60;
     width = 56;
     chicken_audio = new Audio('./audio/chicken.mp3')
+
     IMAGES_WALKING = [
         'img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',
         'img/3.Secuencias_Enemy_básico/Versión_pollito/2.Centro.png',
@@ -21,18 +22,12 @@ class Chick extends MovableObject {
 
     animate() {
        
-            setInterval(() => {
-                this.moveLeft();
-             }, 1000/60);
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000/60);
             
-            setInterval(() => {
-                this.playAnimation(this.IMAGES_WALKING);
-            }, 200);
-
-        
-        
-
-        
-       
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_WALKING);
+        }, 200);
     }
 }
