@@ -8,6 +8,8 @@ class MovableObject extends DrawableObject{
 
     /**
      * A gravitation is applied if the character is in air. That means that the character fall with increasing speed.
+     * Every 1000/25 milliseconds the variable "speedY" diminishes, because a number represented by the variable "acceleration" 
+     * is constantly substract.
      */
     applyGravitation(){
         setInterval(() => {
