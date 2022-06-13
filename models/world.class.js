@@ -404,14 +404,4 @@ class World {
     
     
     
-
-    // playMusic(){
-    //     this.soundtrack_audio.play();
-    //     setInterval(() => {
-    //         this.soundtrack_audio.play();
-    //     }, 28000);    
-    
-    
-    // }
-    
 }
