@@ -65,7 +65,7 @@ class MovableObject extends DrawableObject{
      */
     bigHit(){
         this.life -= 50;
-        let soundHit = new Audio('audio/hit.wav').play();
+        let soundHit = new Audio('./audio/hit.wav').play();
         if(this.life < 0){
             this.life = 0;
         } else {
@@ -77,7 +77,7 @@ class MovableObject extends DrawableObject{
      */
     hit(){
         this.life -= 5;
-        let soundHit = new Audio('audio/hit.wav').play();
+        let soundHit = new Audio('./audio/hit.wav').play();
         if(this.life < 0 ){
             this.life = 0;
         } else {
