@@ -160,43 +160,8 @@ h1{
     color: black;
 }
 
-/* Media Queries for different mobiles */
+/* Media Queries */
 
-/* Game Page */
-/* IPAD from 1024px width and 600px height to 1368 px width and 912px height */
-
-@media (max-width:1400px) and (max-height: 1000px){
-    .title-box{
-        display: none;
-    }
-    .game-column{
-        width: 157px;
-        height: 80vh;
-    }
-    /* .game {
-        margin-top: 30px;
-    } */
-    .game-over{
-      top: 0;
-      bottom: 0;
-    }
-
-    .game-over img{
-        height: 100vh;
-    }
-
-    .gameover-btn-container{
-        bottom: 121px;
-    }
-}
-
-@media (max-width:1300px) and (max-height: 850px){
-    .game-column {
-        width: 205px;
-        height: 91vh;
-    }
-   
-}
 
 /* ------------------------------------------------------------- */
 /* Height PC screen */
@@ -266,6 +231,19 @@ h1{
     .game-column{
         width: 121px;
     }
+
+    .start-site{
+        background-size: contain;
+    }
+
+    body{
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    
 }
 
 @media (max-width: 1000px) and (max-height: 700px){
@@ -283,6 +261,7 @@ h1{
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
+       
     }
     
 
@@ -320,7 +299,52 @@ h1{
     }
 }
 
+@media (max-width: 500px) and (max-height: 700px){
+    .buttons-container{
+        right: 48%;
+    }
+}
+
+@media (max-width: 350px) and (max-height: 700px){
+    .buttons-container{
+        right: 51%;
+    }
+}
+
 /* -------------------------------------------------------------- */
+
+/* IPAD from 1024px width and 600px height to 1368 px width and 912px height */
+
+@media (max-width:1400px) and (max-height: 1000px){
+    .title-box{
+        display: none;
+    }
+    .game-column{
+        width: 157px;
+        height: 80vh;
+    }
+    
+    .game-over{
+      top: 0;
+      bottom: 0;
+    }
+
+    .game-over img{
+        height: 100vh;
+    }
+
+    .gameover-btn-container{
+        bottom: 121px;
+    }
+}
+
+@media (max-width:1300px) and (max-height: 850px){
+    .game-column {
+        width: 205px;
+        height: 91vh;
+    }
+   
+}
 
 @media (max-width:1200px) and (max-height: 850px) and (min-height: 720px){
     .game-column{
@@ -386,51 +410,18 @@ h1{
     }
 }
 
-/* TURNED IPAD from 720px width and 1024px height to 912px width and 1368px height  */
-    /* !NON MEASURABLE ON PC SCREEN ---- Max height: ca. 700px */
-/* @media (max-width: 1000px) and (max-height: 1500px){
-    .game-column{
+@media (max-width: 1400px) and (max-height: 1000px) and (min-height:930px){
+    .buttons-container{
+        position: fixed;
+        top: 0;
+    }
+
+    .title-box{
         display: none;
     }
 
-    .game-over{
-        top: 169px;
-    }
 
-    .canvas-container{
-        position: absolute;
-    }
-
-    .top-box{
-        position:relative;
-        top: 40px;
-    }
-
-    .bottom-box{
-        position: relative;
-        bottom: 40px;
-    }
-
-    .mobile-buttons-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        width: 100%;
-    }
-
-    .mobile-buttons-case img{
-        width: 30px;
-        height: 30px;
-        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
-    }
 }
-
-@media (max-width: 810px) and (max-height: 1500px){
-    .canvas-container{
-        padding-left: 0;
-        padding-right: 0;
-    }
-} */
 
 /* TURNED SMARTPHONE from 653px width and 280px height to 915px width and 540px height */
 
@@ -572,30 +563,38 @@ h1{
         position: relative;
         top: 40px;
     }
+
+    body{
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        margin-top: 0;
+    }
+}
+
+@media(min-height:720px) and (max-width: 541px){
+    .start-site{
+        background-size: contain;
+    }
+}
+
+@media (max-width:450px) and (max-height:920px){
+    .buttons-container{
+        bottom: 233px;
+        right: 50%;
+    }
 }
 
 @media (max-width:400px) and (max-height:750px){
     .gameover-btn-container{
         bottom: 70px;
     }
-}
 
-/* FLUID by decrase screen width */
-
-/* Start Page */
-
-/* IPAD from 1024px width and 600px height to 1368px width and 912px */
-@media (max-width: 1400px) and (max-height: 1000px) and (min-height:930px){
     .buttons-container{
-        position: fixed;
-        top: 0;
+        bottom: 130px;
+       
     }
-
-    .title-box{
-        display: none;
-    }
-
-
 }
 
 
