@@ -162,7 +162,7 @@ h1{
 
 /* Media Queries for different mobiles */
 
-
+/* Game Page */
 /* IPAD from 1024px width and 600px height to 1368 px width and 912px height */
 
 @media (max-width:1400px) and (max-height: 1000px){
@@ -171,32 +171,161 @@ h1{
     }
     .game-column{
         width: 157px;
-        height: 70vh;
+        height: 80vh;
     }
-    .game {
+    /* .game {
         margin-top: 30px;
-    }
+    } */
     .game-over{
-        top: 109px;
+      top: 0;
+      bottom: 0;
+    }
+
+    .game-over img{
+        height: 100vh;
+    }
+
+    .gameover-btn-container{
+        bottom: 121px;
     }
 }
 
 @media (max-width:1300px) and (max-height: 850px){
     .game-column {
         width: 205px;
+        height: 91vh;
     }
+   
+}
+
+/* ------------------------------------------------------------- */
+/* Height PC screen */
+@media (max-width: 1300px) and (max-height: 700px) and (min-height: 550px){
+    .game-over img{
+        height: 480px;
+    }
+
     .game-over{
-        top: 70px;
+        top: 68px;
+        bottom: none;
+    }
+
+    .gameover-btn-container{
+        bottom: 135px;
+    }
+
+    .game-column{
+        width: 180px;
     }
 }
 
-@media (max-width:1200px) and (max-height: 850px){
+@media (max-width: 1160px) and (max-height: 700px){
+    .game-over{
+        top: 64px;
+    }
+
+    .game-column {
+        width: 155px;
+        height: 89vh;
+    }
+
+    .game{
+        gap: 3px;
+    }
+}
+
+@media (max-width:1130px) and (max-height: 700px){
+    p, span{
+        font-size: 16px;
+    }
+
+    .game-column{
+        height: 98vh;
+    }
+
+    .game-over{
+        top: 95px;
+    }
+
+    .game{
+        gap: 1;
+    }
+
+    .canvas-container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 1050px) and (max-height: 700px){
+   
+    .key-value img{
+        width: 30px;
+    }
+
+    .game-column{
+        width: 121px;
+    }
+}
+
+@media (max-width: 1000px) and (max-height: 700px){
+    .game-column{
+        display: none;
+    }
+
+    .game {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    
+
+    .game-over{
+        top: 102px;
+    }
+
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .mobile-buttons-case img{
+        width: 30px;
+        height: 30px;
+        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
+    }
+
+    .bottom-box{
+        position: relative;
+        bottom: 40px;
+    }
+
+    .top-box{
+        position: relative;
+        top: 40px;
+    }
+}
+
+@media (max-width: 750px) and (max-height: 700px){
+    #canvas{
+        width: 100%;
+    }
+}
+
+/* -------------------------------------------------------------- */
+
+@media (max-width:1200px) and (max-height: 850px) and (min-height: 720px){
     .game-column{
         width: 158px;
-        height: 76vh;
-    }
-    .game-over{
-        top: 101px;
+       
     }
 
     .canvas-container {
@@ -204,7 +333,7 @@ h1{
     }
 }
 
-@media (max-width: 1150px) and (max-height: 770px){
+@media (max-width: 1150px) and (max-height: 770px) and (min-height:730px){
     .game-column {
         width: 155px;
         height: 89vh;
@@ -215,15 +344,26 @@ h1{
     .game-over{
         top: 110px;
     }
+    .game-over img{
+        height: 480px;
+        width: 720px;
+    }
+    .gameover-btn-container{
+        bottom: 186px;
+    }
 }
 
-@media (max-width: 1100px) and (max-height: 770px){
+@media (max-width: 1115px) and (max-height: 770px) and (min-height: 720px){
     .game {
         margin-top: 0;
     }
 
     .game-over {
-        top: 101px;
+        top: 87px;
+    }
+
+    .game-over img{
+        height: 480px;
     }
 
     .canvas-container{
@@ -247,8 +387,8 @@ h1{
 }
 
 /* TURNED IPAD from 720px width and 1024px height to 912px width and 1368px height  */
-
-@media (max-width: 1000px) and (max-height: 1500px){
+    /* !NON MEASURABLE ON PC SCREEN ---- Max height: ca. 700px */
+/* @media (max-width: 1000px) and (max-height: 1500px){
     .game-column{
         display: none;
     }
@@ -290,7 +430,7 @@ h1{
         padding-left: 0;
         padding-right: 0;
     }
-}
+} */
 
 /* TURNED SMARTPHONE from 653px width and 280px height to 915px width and 540px height */
 
@@ -325,6 +465,12 @@ h1{
         width: 100%;
         height: 100vh;
     }
+
+    .gameover-btn-container {
+        bottom: 0;
+    }
+
+  
 }
 
 @media (max-width: 800px) and (max-height:600px){
@@ -370,6 +516,8 @@ h1{
 
     .canvas-container{
         background-image: none;
+        padding-left: 0;
+        padding-right:0;
     }
 
     .game{
@@ -386,18 +534,68 @@ h1{
         margin-top: 0;
     }
 
+    .game-column{
+        display: none;
+    }
+
     .game-over{
         top: 118px;
+    }
+
+    .game-over img{
+        height: 480px;
+    }
+
+    .gameover-btn-container{
+        bottom: 207px;
+    }
+
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .mobile-buttons-case img{
+        width: 30px;
+        height: 30px;
+        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
+    }
+
+    .bottom-box{
+        position: relative;
+        bottom: 40px;
+    }
+
+    .top-box{
+        position: relative;
+        top: 40px;
+    }
+}
+
+@media (max-width:400px) and (max-height:750px){
+    .gameover-btn-container{
+        bottom: 70px;
     }
 }
 
 /* FLUID by decrase screen width */
-@media (max-width:1300px) and (max-height:700px){
-    .game-column{
-        width: 136px;
-        height: 90vh;
-    }
-}
 
+/* Start Page */
+
+/* IPAD from 1024px width and 600px height to 1368px width and 912px */
+@media (max-width: 1400px) and (max-height: 1000px) and (min-height:930px){
+    .buttons-container{
+        position: fixed;
+        top: 0;
+    }
+
+    .title-box{
+        display: none;
+    }
+
+
+}
 
 
