@@ -106,16 +106,16 @@ h1{
 
 .buttons-container{
     position: absolute;
-    bottom: 20px;
-    right: 43%;
-    width: 15%;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .gameover-btn-container{
     position: absolute;
-    bottom: 20px;
-    right: 43%;
-    width: 15%;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .buttons-container button{
@@ -222,7 +222,7 @@ h1{
     }
 }
 
-@media (max-width: 1050px) and (max-height: 700px){
+@media (max-width: 1000px) and (max-height: 700px) and (min-height:650px){
    
     .key-value img{
         width: 30px;
@@ -300,15 +300,11 @@ h1{
 }
 
 @media (max-width: 500px) and (max-height: 700px){
-    .buttons-container{
-        right: 48%;
-    }
+   
 }
 
 @media (max-width: 350px) and (max-height: 700px){
-    .buttons-container{
-        right: 51%;
-    }
+   
 }
 
 /* -------------------------------------------------------------- */
@@ -320,8 +316,8 @@ h1{
         display: none;
     }
     .game-column{
-        width: 157px;
-        height: 80vh;
+        width: 146px;
+        height: 95vh;
     }
     
     .game-over{
@@ -330,7 +326,7 @@ h1{
     }
 
     .game-over img{
-        height: 100vh;
+        height: 91vh;
     }
 
     .gameover-btn-container{
@@ -338,9 +334,9 @@ h1{
     }
 }
 
-@media (max-width:1300px) and (max-height: 850px){
+@media (max-width:1300px) and (max-height: 850px) and (min-height: 650px){
     .game-column {
-        width: 205px;
+        width: 153px;
         height: 91vh;
     }
    
@@ -401,6 +397,27 @@ h1{
 
     .game-column{
         width: 124px;
+    }
+}
+
+@media (min-height: 760px) {
+    .start-site{
+        background-size: contain;
+      
+    }
+
+
+
+    .title-box{
+        display: none;
+    }
+
+    
+
+    
+
+    .buttons-container{
+        bottom: 15%;
     }
 }
 
@@ -466,7 +483,6 @@ h1{
 
 @media (max-width: 800px) and (max-height:600px){
     .canvas-container{
-        background-image: none;
     }
     .game-over{
         position: fixed;
@@ -497,12 +513,22 @@ h1{
     }
 }
 
+@media (min-width: 640px) and (min-height: 270px) and (max-height:430px){
+    .buttons-container{
+        right: 360px;
+    }
+}
+
 /* SMARTPHONE from 280px width and 653px height to 540px width and 915px height */
 
-@media (max-width:600px) and (max-height:1000px){
+@media (max-width:600px) and (max-height:1000px) and (min-height:710px) and (min-width:340px){
     #canvas{
         width: 100%;
         
+    }
+
+    .buttons-container{
+        bottom: 25%;
     }
 
     .canvas-container{
@@ -573,17 +599,14 @@ h1{
     }
 }
 
-@media(min-height:720px) and (max-width: 541px){
+@media(min-height:710px) and (max-width: 541px){
     .start-site{
         background-size: contain;
     }
 }
 
 @media (max-width:450px) and (max-height:920px){
-    .buttons-container{
-        bottom: 233px;
-        right: 50%;
-    }
+   
 }
 
 @media (max-width:400px) and (max-height:750px){
@@ -591,10 +614,11 @@ h1{
         bottom: 70px;
     }
 
-    .buttons-container{
-        bottom: 130px;
-       
-    }
+   
+}
+
+@media (max-height:550px) and (min-width: 650px){
+   
 }
 
 
