@@ -1,0 +1,172 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Orbitron';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    
+}
+
+.game-column{
+    width: 300px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(4, 30, 21, 0.9);
+    border-radius: 24px;
+}
+
+a{
+    color: white;
+}
+
+.key-value {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: invert();
+}
+
+.game-over{
+    position: fixed;
+    top: 194px;
+    
+}
+
+
+.game-over img{
+    height: 480px;
+    width: 720px;
+}
+
+.start-site-body{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.start-site{
+    background-image: url('../img/9.Intro _ Outro Image/Start Screen/Opción 1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.canvas-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('img/photo-frame2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-position: center;
+    border-radius: 24px;
+}
+
+canvas {
+    background-color: black;
+    border-radius: 24px;
+}
+
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(219, 182, 16, 0.9);
+    border-radius: 12px;
+    margin: 12px;
+    box-sizing: border-box;
+}
+
+.title-box img {
+    height: 80px;
+    object-fit: contain;
+    
+}
+
+h1{
+    border-bottom: 3px solid rgba(219, 182, 16, 0.9);
+    border-top: 3px solid rgba(219, 182, 16, 0.9);
+}
+
+
+.buttons-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.gameover-btn-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.buttons-container button{
+    color: #bf0000;
+    background-color: rgb(255, 209, 18);
+    font-size: 30px;
+    font-weight: 800;
+    border: 6px solid rgb(149, 56, 22);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.gameover-btn-container button{
+    color: #bf0000;
+    background-color: rgb(255, 209, 18);
+    font-size: 30px;
+    font-weight: 800;
+    border: 6px solid rgb(149, 56, 22);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none ;
+}
+
+
+
+
+.link-button{
+    text-decoration: none;
+    color: #bf0000;
+}
+
+.mobile-buttons-container{
+    display: none;
+}
+
+
+
+.impressum a{
+    color: black;
+}

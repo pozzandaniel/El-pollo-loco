@@ -1,0 +1,148 @@
+/* Media Queries */
+
+
+/* ------------------------------------------------------------- */
+/* Height PC screen */
+@media (max-width: 1300px) and (max-height: 700px) and (min-height: 550px){
+    .game-over img{
+        height: 480px;
+    }
+
+    .game-over{
+        top: 68px;
+        bottom: none;
+    }
+
+    .gameover-btn-container{
+        bottom: 135px;
+    }
+
+    .game-column{
+        width: 180px;
+    }
+}
+
+@media (max-width: 1160px) and (max-height: 700px){
+    .game-over{
+        top: 64px;
+    }
+
+    .game-column {
+        width: 155px;
+        height: 89vh;
+    }
+
+    .game{
+        gap: 3px;
+    }
+}
+
+@media (max-width:1130px) and (max-height: 700px){
+    p, span{
+        font-size: 16px;
+    }
+
+    .game-column{
+        height: 98vh;
+    }
+
+    .game-over{
+        top: 95px;
+    }
+
+    .game{
+        gap: 1;
+    }
+
+    .canvas-container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 1000px) and (max-height: 700px) and (min-height:650px){
+   
+    .key-value img{
+        width: 30px;
+    }
+
+    .game-column{
+        width: 121px;
+    }
+
+    .start-site{
+        background-size: contain;
+    }
+
+    body{
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    
+}
+
+@media (max-width: 1000px) and (max-height: 700px){
+    .game-column{
+        display: none;
+    }
+
+    .game {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+       
+    }
+    
+
+    .game-over{
+        top: 102px;
+    }
+
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .mobile-buttons-case img{
+        width: 30px;
+        height: 30px;
+        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
+    }
+
+    .bottom-box{
+        position: relative;
+        bottom: 40px;
+    }
+
+    .top-box{
+        position: relative;
+        top: 40px;
+    }
+}
+
+@media (max-width: 750px) and (max-height: 700px){
+    #canvas{
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) and (max-height: 700px){
+   
+}
+
+@media (max-width: 350px) and (max-height: 700px){
+   
+}
+
+/* -------------------------------------------------------------- */

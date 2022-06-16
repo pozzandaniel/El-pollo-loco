@@ -28,7 +28,7 @@ function startGame(){
     soundtrack_audio = new Audio('./audio/morenita.mp3');
     soundtrack_audio.play();
     document.getElementsByClassName('game')[0].classList.remove('d-none');
-    document.getElementsByClassName('start-site')[0].classList.add('d-none');
+    document.getElementsByClassName('start-site-body')[0].classList.add('d-none');
     document.getElementsByClassName('title-box')[0].classList.remove('d-none');
     init();
     touchScreenComandBar(); 
