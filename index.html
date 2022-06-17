@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/pc_screen.css">
+    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./css/pc_screen.css">
     <link rel="stylesheet" href="./css/ipad.css">
-    <link rel="stylesheet" href="./css/smartphone.css">
+    <link rel="stylesheet" href="./css/smartphone.css"> -->
     <link rel="stylesheet" href="custom.css">    
     <title>El Pollo Loco</title>
     <link rel="icon" href="./img/favicon.png">
@@ -39,28 +39,43 @@
             </div>
         </div>
     </div>
-    <div class="title-box d-none">
-        <img src="./img/sombrero.png" alt="">
-        <h1>El Pollo Loco</h1>
-        <img src="./img/maracas.png" alt="">
+    <header>
+        <div class="click-icons">
+            <img id="resizeButton" src="./img/maximize-solid.svg" alt="">
+            <img id="menu-list" src="./img/bars-solid.svg" alt="">
+            <img id="play_grn"  class="audioButton d-none" src="./img/volume-high-solid.svg" alt="">
+            <img id="mute_grn"  class="audioButton" src="./img/volume-xmark-solid.svg" alt="">
+        </div>
+        <div class="title-box d-none">
+            <img src="./img/sombrero.png" alt="">
+            <h1>El Pollo Loco</h1>
+            <img src="./img/maracas.png" alt="">
+        </div>
+    </header>
+
+    <div class="game-menu d-none">
+        <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-left-solid.svg" alt=""><span>LEFT</span></div>
+        <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-up-solid.svg" alt=""> <span>JUMP</span></div>
+        <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-right-solid.svg" alt=""> <span>RIGHT</span></div>
+        <div onclick="alertKeyboard()" class="key-value"><img  src="./img/space.svg" alt=""> <span>ATTACK (Space Bar)</span></div>
+        
     </div>
     <div class="game d-none">
-        <div class="game-column">
-            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-left-solid.svg" alt=""><span>LEFT</span></div>
-            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-up-solid.svg" alt=""> <span>JUMP</span></div>
-            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/square-caret-right-solid.svg" alt=""> <span>RIGHT</span></div>
-            <div onclick="alertKeyboard()" class="key-value"><img  src="./img/space.svg" alt=""> <span>ATTACK (Space Bar)</span></div>
-            
-        </div>
+  
+
+
         <div class="canvas-container">
-            <div class="mobile-buttons-container top-box">
-                <div class="mobile-buttons-case">
-                    <img id="audioMute" src="./img/volume-xmark-solid.svg" alt="">
-                    <img class="d-none" id="audioPlay" src="./img/volume-high-solid.svg" alt="">
+           
+            <div class="game-over d-none">
+                <img id="go-img" src="./img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png" alt="">
+                <div class="gameover-btn-container">
+                    <button ><a onclick="init()" href="./index.html"  class="link-button">¡Click here!</a></button>
                 </div>
             </div>
             <canvas id="canvas" width="720" height="480"></canvas>
-            <div class="mobile-buttons-container bottom-box">
+
+            <!-- Only for mobile visible -->
+            <div class="mobile-buttons-container">
                 <div class="mobile-buttons-case">
                     <img id="leftButton" src="./img/square-caret-left-solid.svg" alt="">
                     <img id="rightButton" src="./img/square-caret-right-solid.svg" alt="">
@@ -70,25 +85,17 @@
                     <img id="attackButton" src="./img/share-solid.svg" alt="">
                 </div>
             </div>
+            <!-- ----------------------- -->
         </div>
        
-       
-        <div class="game-column">
-            <div class="key-value"><img id="resizeButton" src="./img/maximize-solid.svg" alt=""> <span>RESIZE</span></div>
-            <div class="key-value" id="mute_grn"><img  class="audioButton" src="./img/volume-xmark-solid.svg" alt=""><span>MUTE</span></div>
-            <div class="key-value  d-none" id="play_grn"><img  class="audioButton" src="./img/volume-high-solid.svg" alt="">MUSIC</div>
-            <p>Space icon created by<a href="https://www.flaticon.com/free-icons/keyboard" title="keyboard icons"> Vaadin - Flaticon</a></p>
-            <p>Other icons are provided by <a href="https://fontawesome.com/"> fontawesome</a></p>
-            <p>Logos and favicon are created in the website <a href="https://logomakr.com/app/"> logomakr</a></p>
-        </div>
+        
     </div>
-    <div class="game-over d-none">
-        <img src="./img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png" alt="">
-        <div class="gameover-btn-container">
-            <button ><a onclick="init()" href="./index.html"  class="link-button">¡Click here!</a></button>
-        </div>
+    
+    
+    <div class="impressum d-none">
+        <p>Other icons are provided by <a href="https://fontawesome.com/"> fontawesome</a></p>
+        <p>Logos and favicon are created in the website <a href="https://logomakr.com/app/"> logomakr</a></p>
     </div>
-
     
 </body>
 </html>

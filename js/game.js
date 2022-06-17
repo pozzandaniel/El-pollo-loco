@@ -10,6 +10,8 @@ let leftButton;
 let rightButton;
 let jumpButton;
 let attackButton;
+let menuList;
+let menuOpened = false;
 
 /**
  * This function create the object "World", that contain all the other elements of the game
@@ -30,6 +32,7 @@ function startGame(){
     document.getElementsByClassName('game')[0].classList.remove('d-none');
     document.getElementsByClassName('start-site-body')[0].classList.add('d-none');
     document.getElementsByClassName('title-box')[0].classList.remove('d-none');
+    document.getElementsByClassName('impressum')[0].classList.remove('d-none');
     init();
     touchScreenComandBar(); 
 }
@@ -105,9 +108,9 @@ function touchScreenComandBar(){
 
     playMusicByPCScreen();
     changeToFullscreenCondition();
-    playMusicByMobileScreen();
     eventPressTouchScreen();
     eventReleaseTouchScreen();
+    openMenuKeysDescription()
 }
 
 /**
@@ -115,15 +118,45 @@ function touchScreenComandBar(){
  * 
  */
 function translateButtonToVariable(){
-     mute_grn = document.getElementById('mute_grn');
-     play_grn = document.getElementById('play_grn');
-     audioMute = document.getElementById('audioMute');
-     audioPlay = document.getElementById('audioPlay');
-     resizeButton = document.getElementById('resizeButton');
-     leftButton = document.getElementById('leftButton');
-     rightButton = document.getElementById('rightButton');
-     jumpButton = document.getElementById('jumpButton');
-     attackButton = document.getElementById('attackButton');
+    mute_grn = document.getElementById('mute_grn');
+    play_grn = document.getElementById('play_grn');
+    audioMute = document.getElementById('audioMute');
+    audioPlay = document.getElementById('audioPlay');
+    resizeButton = document.getElementById('resizeButton');
+    leftButton = document.getElementById('leftButton');
+    rightButton = document.getElementById('rightButton');
+    jumpButton = document.getElementById('jumpButton');
+    attackButton = document.getElementById('attackButton');
+    menuList = document.getElementById('menu-list');
+    
+}
+
+/**
+ * By clicking the icon menu, the list with the game buttons description is shown
+ */
+function openMenuKeysDescription(){
+    
+    menuList.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        if(menuOpened == false){
+            document.getElementsByClassName('game-menu')[0].classList.remove('d-none');
+            menuOpened = true;
+        } else {
+            document.getElementsByClassName('game-menu')[0].classList.add('d-none');
+            menuOpened = false;
+        }
+    })
+    menuList.addEventListener('mousedown', (e)=>{
+        e.preventDefault();
+        if(menuOpened == false){
+            document.getElementsByClassName('game-menu')[0].classList.remove('d-none');
+            menuOpened = true;
+        } else {
+            document.getElementsByClassName('game-menu')[0].classList.add('d-none');
+            menuOpened = false;
+        }
+    })
+   
 }
 
 /**
@@ -134,6 +167,19 @@ function translateButtonToVariable(){
  * @param {variable} play_grn - Another div tag with the audio icon for loud music occurring by PC Media Queries 
  */
 function playMusicByPCScreen(){
+    mute_grn.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        soundtrack_audio.pause();
+        mute_grn.classList.add('d-none');
+        play_grn.classList.remove('d-none');
+    })
+
+    play_grn.addEventListener('touchstart', (e) =>{
+        e.preventDefault();
+        soundtrack_audio.play();
+        mute_grn.classList.remove('d-none');
+        play_grn.classList.add('d-none');
+    })
     mute_grn.addEventListener('mousedown', (e)=>{
         e.preventDefault();
         soundtrack_audio.pause();
@@ -156,34 +202,17 @@ function playMusicByPCScreen(){
  * 
  */
 function changeToFullscreenCondition(){
+    resizeButton.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        canvas.requestFullscreen();
+    })
     resizeButton.addEventListener('mousedown', (e)=>{
         e.preventDefault();
         canvas.requestFullscreen();
     })
 }
 
-/**
- * When the user press the related buttons the soundtrack plays or stopps according to the state of the selection.
- * These buttons concern the Mobile view.
- * @param {Audio} soundtrack_audio - The soundtrack element of the game.
- * @param {variable} audioMute - The sound icon related to the interruption of the music.
- * @param {variable} audioPlay - The sound icon related to loud music.
- */
-function playMusicByMobileScreen(){
-    audioMute.addEventListener('touchstart', (e)=>{
-        e.preventDefault();
-        soundtrack_audio.pause();
-        audioMute.classList.add('d-none');
-        audioPlay.classList.remove('d-none');
-    })
 
-    audioPlay.addEventListener('touchstart', (e)=>{
-        e.preventDefault();
-        soundtrack_audio.play();
-        audioMute.classList.remove('d-none');
-        audioPlay.classList.add('d-none');
-    })
-}
 
 /**
  * When a button on a mobile screen is pressed it converts a variable in a true value.
@@ -249,6 +278,7 @@ function eventReleaseTouchScreen(){
 function alertKeyboard(){
     alert('For this action use the keyboard');
 }
+
 
 
 

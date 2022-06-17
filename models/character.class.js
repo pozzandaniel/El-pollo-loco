@@ -165,7 +165,7 @@ class Character extends MovableObject{
                 let audioJump = new Audio('./audio/jump.wav').play(); 
                 this.speedY = 30;  
             }
-        }, 200);
+        }, 100);
         if(this.life <= 0){
             clearInterval(jump);
         }  

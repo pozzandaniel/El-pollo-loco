@@ -1,0 +1,379 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Orbitron';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Start game page */
+
+.start-site-body{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.start-site{
+    background-image: url('./img/9.Intro _ Outro Image/Start Screen/Opción 1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.buttons-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+.buttons-container button{
+    color: #bf0000;
+    background-color: rgb(255, 209, 18);
+    font-size: 30px;
+    font-weight: 800;
+    border: 6px solid rgb(149, 56, 22);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* ------------- */
+
+/* Header style */
+
+header{
+    width: 720px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.click-icons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.click-icons img{
+    width: 30px;
+}
+
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(219, 182, 16, 0.9);
+    border-radius: 12px;
+    margin: 12px;
+    box-sizing: border-box;
+}
+
+.title-box img {
+    height: 80px;
+    object-fit: contain;
+    
+}
+
+h1{
+    border-bottom: 3px solid rgba(219, 182, 16, 0.9);
+    border-top: 3px solid rgba(219, 182, 16, 0.9);
+}
+
+/* ------------------------------------ */
+
+/* Game container style */
+
+.game{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    top: 140px;
+    gap: 20px;
+}
+
+
+.canvas-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 24px;
+}
+
+.game-over{
+    position: relative;
+    z-index: 2; 
+}
+
+.game-over img{
+    height: 480px;
+    width: 720px;
+}
+
+
+
+.gameover-btn-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.gameover-btn-container button{
+    color: #bf0000;
+    background-color: rgb(255, 209, 18);
+    font-size: 30px;
+    font-weight: 800;
+    border: 6px solid rgb(149, 56, 22);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+#canvas {
+    position: absolute;
+    top: 0;
+    background-color: black;
+    border-radius: 24px;
+}
+
+
+/* xxxxxxxxxxxxxxxx end GAME Container xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+
+/* Game menu style */
+
+
+.game-menu{
+    position: absolute;
+    left: 0;
+    top: 140px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 3;
+    padding-left: 12px;
+    padding-right: 12px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.key-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: invert();
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+}
+
+.key-value img{
+    width: 30px;
+}
+
+/* ------------- */
+
+
+
+
+
+
+.d-none {
+    display: none ;
+}
+
+
+
+
+.link-button{
+    text-decoration: none;
+    color: #bf0000;
+}
+
+.mobile-buttons-container{
+    display: none;
+}
+
+
+
+/* Impressum style */
+
+.impressum{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0;
+}
+.impressum p{
+    font-size: 12px;
+}
+
+
+.impressum a{
+    color: white;
+}
+
+/* -------------- */
+
+/* Break Points Media Query */
+@media (max-width: 720px){
+    canvas{
+        width: 100%;
+        /* height: 100%; */
+    }
+
+    .canvas-container{
+        width: 100%;
+    }
+
+    .game{
+        width: 100%;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    .game-over img{
+        width: 100%;
+    }
+}
+
+@media (max-width:560px) and (max-height:850px){
+    .title-box{
+        display: none;
+    }
+
+    header{
+        width: fit-content;
+    }
+
+    .click-icons{
+        flex-direction: row;
+    }
+
+
+    .click-icons{
+        margin-top: 90px;
+        gap: 30px;
+    }
+ 
+}
+
+/* Height screen */
+
+@media (min-height: 800px){
+    .game{
+        top: 240px;
+    }
+
+    .game-menu{
+        top: 240px;
+    }
+
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+        position: fixed;
+        bottom: 15vh;
+    }
+
+    
+    .mobile-buttons-case{
+        display: flex;
+        gap: 70px;
+        
+    }
+
+    .mobile-buttons-case img{
+        width: 30px;
+        height: 30px;
+        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
+    }
+}
+
+@media (max-width:560px) and (min-height:800px){
+    header{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .click-icons{
+        flex-direction: row;
+        align-items: center;
+    }
+} 
+
+/* SMARTPHONE */
+@media (max-height: 800px) and (max-width: 600px){
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+        position: fixed;
+        bottom: 15vh;
+    }
+
+    
+    .mobile-buttons-case{
+        display: flex;
+        gap: 70px;
+        
+    }
+
+    .mobile-buttons-case img{
+        width: 30px;
+        height: 30px;
+        filter: invert(17%) sepia(24%) saturate(7500%) hue-rotate(355deg) brightness(99%) contrast(99%);
+    }
+}
+
+@media (max-height: 800px) and (max-width: 500px){
+    .mobile-buttons-container{
+        bottom: 25vh;
+    }
+}
+
+@media (max-height: 800px) and (max-width: 400px){
+    .click-icons{
+        margin-top: 50px;
+    }
+
+    .game{
+        top: 100px;
+    }
+
+    .game-menu{
+        top: 100px;
+    }
+
+    .mobile-buttons-container{
+        bottom: 30vh;
+    }
+}
