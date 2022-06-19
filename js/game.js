@@ -33,6 +33,7 @@ function startGame(){
     document.getElementsByClassName('start-site-body')[0].classList.add('d-none');
     document.getElementsByClassName('title-box')[0].classList.remove('d-none');
     document.getElementsByClassName('impressum')[0].classList.remove('d-none');
+    document.getElementsByClassName('click-icons')[0].classList.remove('d-none');
     init();
     touchScreenComandBar(); 
 }
