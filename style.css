@@ -11,38 +11,53 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-
 /* Start game page */
-
 .start-site-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: linear-gradient(#57b7d5, #42b0d1, #23a6cd,#1ea5cc, #1aa3cb, #b76127,  #b76c1d, #bc7a0f, #f9c86a,  #f9c86a   );
+    background-image: url('./img/9.Intro _ Outro Image/background.svg');
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
 .start-site{
-    background-image: url('./img/9.Intro _ Outro Image/Start Screen/Opción 1.png');
+    background-image: url('./img/9.Intro _ Outro Image/Start Screen/Opción-1.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: 60vh;
     width: 100%;
 }
 
+.command-explanation {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.command-explanation p {
+    width: 50%;
+}
 
 .buttons-container{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     right: 0;
     left: 0;
 }
-
 
 .buttons-container button{
     color: #bf0000;
@@ -52,6 +67,10 @@ body {
     border: 6px solid rgb(149, 56, 22);
     border-radius: 3px;
     cursor: pointer;
+}
+
+.buttons-container button:hover {
+    filter: brightness(1.2);
 }
 
 /* ------------- */
@@ -112,7 +131,6 @@ h1{
     gap: 20px;
 }
 
-
 .canvas-container{
     position: relative;
     display: flex;
@@ -132,8 +150,6 @@ h1{
     width: 720px;
 }
 
-
-
 .gameover-btn-container{
     position: absolute;
     bottom: 0;
@@ -151,8 +167,6 @@ h1{
     cursor: pointer;
 }
 
-
-
 #canvas {
     position: absolute;
     top: 0;
@@ -160,11 +174,9 @@ h1{
     border-radius: 24px;
 }
 
-
 /* xxxxxxxxxxxxxxxx end GAME Container xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
 
 /* Game menu style */
-
 
 .game-menu{
     position: absolute;
@@ -185,27 +197,15 @@ h1{
     flex-direction: column;
     align-items: center;
     filter: invert();
-    /* margin-top: 20px;
-    margin-bottom: 20px; */
 }
 
 .key-value img{
     width: 30px;
 }
 
-/* ------------- */
-
-
-
-
-
-
 .d-none {
     display: none ;
 }
-
-
-
 
 .link-button{
     text-decoration: none;
@@ -215,34 +215,37 @@ h1{
 .mobile-buttons-container{
     display: none;
 }
-
-
+/* ------------- */
 
 /* Impressum style */
 
-.impressum{
+.impressum {
     position: absolute;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
     left: 0;
     right: 0;
 }
-.impressum p{
+
+.impressum p {
     font-size: 12px;
 }
 
-
-.impressum a{
+.impressum a {
     color: white;
 }
 
 /* -------------- */
 
-/* Break Points Media Query */
-@media (max-width: 720px){
+@media (max-width: 1000px) {
+    #resizeButton {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
     canvas{
         width: 100%;
-        /* height: 100%; */
     }
 
     .canvas-container{
@@ -275,12 +278,10 @@ h1{
         flex-direction: row;
     }
 
-
     .click-icons{
         margin-top: 90px;
         gap: 30px;
     }
- 
 }
 
 /* Height screen */
@@ -302,12 +303,10 @@ h1{
         position: fixed;
         bottom: 15vh;
     }
-
     
     .mobile-buttons-case{
         display: flex;
         gap: 70px;
-        
     }
 
     .mobile-buttons-case img{
@@ -317,7 +316,8 @@ h1{
     }
 }
 
-@media (max-width:560px) and (min-height:800px){
+@media (max-width:560px) and (min-height:800px) {
+
     header{
         flex-direction: column-reverse;
         align-items: center;
@@ -330,7 +330,8 @@ h1{
 } 
 
 /* SMARTPHONE */
-@media(max-height: 480px){
+@media(max-height: 480px) {
+
     #canvas{
         height: 100%;
     }
@@ -357,6 +358,7 @@ h1{
 }
 
 @media (max-height: 800px) and (max-width: 600px) and (min-height: 600px){
+
     .mobile-buttons-container {
         display: flex;
         justify-content: space-around;
@@ -365,7 +367,6 @@ h1{
         position: fixed;
         bottom: 15vh;
     }
-
     
     .mobile-buttons-case{
         display: flex;
@@ -380,13 +381,15 @@ h1{
     }
 }
 
-@media (max-height: 800px) and (max-width: 500px){
+@media (max-height: 800px) and (max-width: 500px) {
+
     .mobile-buttons-container{
         bottom: 25vh;
     }
 }
 
-@media (max-height: 800px) and (max-width: 400px){
+@media (max-height: 800px) and (max-width: 400px) {
+
     .click-icons{
         margin-top: 50px;
     }
@@ -405,7 +408,9 @@ h1{
 }
 
 /* TURNED SMARTPHONE */
+
 @media (max-height: 600px) {
+
     .title-box{
         display: none;
     }
@@ -443,7 +448,6 @@ h1{
         bottom: 15vh;
     }
     
-    
     .mobile-buttons-case{
         display: flex;
         gap: 70px;
@@ -456,16 +460,17 @@ h1{
     }
 }
 
-@media (max-height:500px){
+@media (max-height:500px) {
+
     .mobile-buttons-container{
         bottom: 7vh;
     }
-
-    
 }
 
 /* IPAD */
-@media (min-height: 1000px){
+
+@media (min-height: 1000px) {
+
     .mobile-buttons-container{
         bottom: 20vh;
     }
@@ -480,9 +485,32 @@ h1{
     }
 }
 
-@media (min-height: 1250px){
+@media (min-height: 1250px) {
+
     .game{
         top: 350px;
+    }
+}
+
+@media (min-height: 700px) and (min-width: 1000px) and (max-width:1300px) {
+
+    .mobile-buttons-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+        position: fixed;
+        bottom: 15vh;
+    }
+    
+    .mobile-buttons-case {
+        display: flex;
+        gap: 70px;
+    }
+    
+    .mobile-buttons-case img {
+        width: 50px;
+        height: 50px;
     }
 }
 

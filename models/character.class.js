@@ -10,71 +10,69 @@ class Character extends MovableObject{
    
 
     IMAGES_PACEFUL = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-1.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-2.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-3.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-4.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-5.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-6.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-7.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-8.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-9.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-1.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-2.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-3.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-4.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-5.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-6.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-7.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-8.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-9.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.webp'
     ];
 
     IMAGES_SLEEPING = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-11.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-12.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-13.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-14.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-15.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-16.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-17.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-18.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-19.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-20.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-11.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-12.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-13.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-14.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-15.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-16.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-17.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-18.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-19.webp'
     ];
 
     IMAGES_WALKING = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-23.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-24.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-25.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-26.png'
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-23.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-24.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-25.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-26.webp'
     ];
 
     IMAGES_JUMPING = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-31.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-32.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-33.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-34.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-35.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-36.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-37.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-38.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-39.png',
-        // 'img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-40.png'
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-31.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-32.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-33.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-34.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-35.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-36.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-37.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-38.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-39.webp'
     ];
 
     IMAGES_DEAD = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp'
     ];
 
     IMAGES_HURT = [
-        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-41.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-42.png',
-        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-41.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-42.webp',
+        './img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.webp',
     ];
     
     constructor(){
-        super().loadImg('./img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
+        super().loadImg('./img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.webp');
         this.setImageCaches();
         this.jump();
         this.waiting();
@@ -229,20 +227,20 @@ class Character extends MovableObject{
      * That's the function that substitute the images of the animationSet "IMAGES_DEAD" with the last image of this set.
      */
     endAnimationGameOver(){
-        let imageCache1 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png'];
-        let imageCache2 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png'];
-        let imageCache3 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png'];
-        let imageCache4 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png'];
-        let imageCache5 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png'];
-        let imageCache6 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'];
-        let imageCache7 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'];
-        imageCache1.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache2.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache3.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache4.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache5.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache6.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
-        imageCache7.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png';
+        let imageCache1 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.webp'];
+        let imageCache2 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.webp'];
+        let imageCache3 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.webp'];
+        let imageCache4 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.webp'];
+        let imageCache5 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.webp'];
+        let imageCache6 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.webp'];
+        let imageCache7 = this.imageCache['./img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp'];
+        imageCache1.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache2.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache3.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache4.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache5.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache6.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
+        imageCache7.src = './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.webp';
 
     }
 

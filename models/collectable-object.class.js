@@ -1,19 +1,19 @@
 class CollectableObject extends MovableObject {
     img;
     aboveGround = 360;
-    bottle1 = 'img/6.botella/2.Botella_enterrada1.png';
-    bottle2 = 'img/6.botella/2.Botella_enterrada2.png';
-    coin1 = 'img/8.Coin/Moneda1.png';
-    coin2 = 'img/8.Coin/Moneda2.png';
+    bottle1 = 'img/6.botella/2.Botella_enterrada1.webp';
+    bottle2 = 'img/6.botella/2.Botella_enterrada2.webp';
+    coin1 = 'img/8.Coin/Moneda1.webp';
+    coin2 = 'img/8.Coin/Moneda2.webp';
 
     BOTTLE_IMAGES = [
-        './img/6.botella/2.Botella_enterrada1.png',
-        './img/6.botella/2.Botella_enterrada2.png'
+        './img/6.botella/2.Botella_enterrada1.webp',
+        './img/6.botella/2.Botella_enterrada2.webp'
     ];
 
     COIN_IMAGES = [
-        './img/8.Coin/Moneda1.png',
-        './img/8.Coin/Moneda2.png',
+        './img/8.Coin/Moneda1.webp',
+        './img/8.Coin/Moneda2.webp',
     ];
    
     constructor(path){

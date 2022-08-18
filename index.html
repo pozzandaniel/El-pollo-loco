@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <!-- <link rel="stylesheet" href="./css/pc_screen.css">
-    <link rel="stylesheet" href="./css/ipad.css">
-    <link rel="stylesheet" href="./css/smartphone.css"> -->
     <link rel="stylesheet" href="custom.css">    
     <title>El Pollo Loco</title>
     <link rel="icon" href="./img/favicon.png">
@@ -29,11 +26,18 @@
     <script src="./models/character.class.js"></script>
     <script src="./level/level1.js"></script>
     <script src="./models/endboss.class.js"></script>
-    <script src="./js/game.js"></script>
+    <script src="./js/game.min.js"></script>
+
 </head>
 <body>
     <div class="start-site-body">
         <div class="start-site">
+            <div class="command-explanation">
+                <p>Up arrow : <b>Jump</b></p>
+                <p>Left arrow : <b>Move left</b></p>
+                <p>Space bar : <b>Throw bottles</b></p>
+                <p>Right Arrow : <b>Move right</b></p>
+            </div>
             <div class="buttons-container">
                 <button onclick="startGame()">Start Game</button>
             </div>
@@ -67,9 +71,9 @@
         <div class="canvas-container">
            
             <div class="game-over d-none">
-                <img id="go-img" src="./img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png" alt="">
+                <img id="go-img" src="./img/9.Intro _ Outro Image/_Game over_ screen/4.Game over!.webp" alt="">
                 <div class="gameover-btn-container">
-                    <button ><a onclick="init()" href="./index.html"  class="link-button">¡Click here!</a></button>
+                    <button ><a onclick="init()" href="https://el-pollo-loco.daniel-pozzan.com"  class="link-button">¡Click here!</a></button>
                 </div>
             </div>
             <canvas id="canvas" width="720" height="480"></canvas>
